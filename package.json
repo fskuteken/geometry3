@@ -10,7 +10,7 @@
     "geometry"
   ],
   "author": "Fernando Kuteken",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fskuteken/geometry3/issues"
   },
