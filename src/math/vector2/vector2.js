@@ -45,6 +45,34 @@ export default class Vector2 {
 
     return this;
   }
+
+  subtract(vector) {
+    this.x -= vector.x;
+    this.y -= vector.y;
+
+    return this;
+  }
+
+  subtractScalar(s) {
+    this.x -= s;
+    this.y -= s;
+
+    return this;
+  }
+
+  subtractValues(x, y) {
+    this.x -= x;
+    this.y -= y;
+
+    return this;
+  }
+
+  subtractVectors(u, v) {
+    this.x = u.x - v.x;
+    this.y = u.y - v.y;
+
+    return this;
+  }
 }
 
 Vector2.zero = new Vector2(0, 0);

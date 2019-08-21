@@ -140,6 +140,84 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#subtract', () => {
+    it('subtracts the values from another vector', () => {
+      const vector = new Vector2(1, 2);
+      const vectorToSubtract = new Vector2(3, 4);
+
+      vector.subtract(vectorToSubtract);
+
+      expect(vector).toMatchObject({ x: -2, y: -2 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const vectorToSubtract = new Vector2();
+
+      const result = vector.subtract(vectorToSubtract);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('#subtractScalar', () => {
+    it('subtracts a scalar to the vector', () => {
+      const vector = new Vector2(1, 2);
+
+      vector.subtractScalar(3);
+
+      expect(vector).toMatchObject({ x: -2, y: -1 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.subtractScalar(1);
+
+      expect(result).toEqual(vector);
+    });
+  });
+
+  describe('#subtractValues', () => {
+    it('subtracts values to the vector', () => {
+      const vector = new Vector2(1, 2);
+
+      vector.subtractValues(3, 4);
+
+      expect(vector).toMatchObject({ x: -2, y: -2 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.subtractValues(1, 2);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('#subtractVectors', () => {
+    it('sets the vector to the difference of two vectors', () => {
+      const vector = new Vector2();
+      const u = new Vector2(1, 2);
+      const v = new Vector2(3, 4);
+
+      vector.subtractVectors(u, v);
+
+      expect(vector).toMatchObject({ x: -2, y: -2 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const u = new Vector2();
+      const v = new Vector2();
+
+      const result = vector.subtractVectors(u, v);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x and y components equal to zero', () => {
