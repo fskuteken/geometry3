@@ -87,6 +87,25 @@ export default class Vector2 {
 
     return this;
   }
+
+  length() {
+    return Math.sqrt(this.x * this.x + this.y * this.y);
+  }
+
+  lengthSquared() {
+    return this.x * this.x + this.y * this.y;
+  }
+
+  normalize() {
+    const length = Math.sqrt(this.x * this.x + this.y * this.y);
+
+    if (length !== 0) {
+      this.x /= length;
+      this.y /= length;
+    }
+
+    return this;
+  }
 }
 
 Vector2.zero = new Vector2(0, 0);

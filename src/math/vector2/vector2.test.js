@@ -254,6 +254,56 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#length', () => {
+    it('returns the length of the vector', () => {
+      const vector = new Vector2(3, 4);
+
+      const result = vector.length();
+
+      expect(result).toEqual(5);
+    });
+  });
+
+  describe('#lengthSquared', () => {
+    it('returns the square of the length of the vector', () => {
+      const vector = new Vector2(3, 4);
+
+      const result = vector.lengthSquared();
+
+      expect(result).toEqual(25);
+    });
+  });
+
+  describe('#normalize', () => {
+    describe('when the length of the vector is zero', () => {
+      it('does nothing', () => {
+        const vector = new Vector2(0, 0);
+
+        vector.normalize();
+
+        expect(vector).toMatchObject({ x: 0, y: 0 });
+      });
+    });
+
+    describe('when the length of the vector is not zero', () => {
+      it('normalizes the vector', () => {
+        const vector = new Vector2(3, 4);
+
+        vector.normalize();
+
+        expect(vector).toMatchObject({ x: 0.6, y: 0.8 });
+      });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.normalize();
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x and y components equal to zero', () => {
