@@ -42,6 +42,26 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#copy', () => {
+    it('copies the x and y values from another vector', () => {
+      const vector = new Vector2();
+      const vectorToCopy = new Vector2(1, 2);
+
+      vector.copy(vectorToCopy);
+
+      expect(vector).toMatchObject(vectorToCopy);
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const vectorToCopy = new Vector2();
+
+      const result = vector.copy(vectorToCopy);
+
+      expect(result).toEqual(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x and y components equal to zero', () => {

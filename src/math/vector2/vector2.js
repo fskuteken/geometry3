@@ -10,6 +10,13 @@ export default class Vector2 {
 
     return this;
   }
+
+  copy(vector) {
+    this.x = vector.x;
+    this.y = vector.y;
+
+    return this;
+  }
 }
 
 Vector2.zero = new Vector2(0, 0);
