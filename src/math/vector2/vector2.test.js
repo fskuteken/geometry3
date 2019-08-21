@@ -42,6 +42,104 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#copy', () => {
+    it('copies the x and y values from another vector', () => {
+      const vector = new Vector2();
+      const vectorToCopy = new Vector2(1, 2);
+
+      vector.copy(vectorToCopy);
+
+      expect(vector).toMatchObject(vectorToCopy);
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const vectorToCopy = new Vector2();
+
+      const result = vector.copy(vectorToCopy);
+
+      expect(result).toEqual(vector);
+    });
+  });
+
+  describe('#add', () => {
+    it('adds the values from another vector', () => {
+      const vector = new Vector2(1, 2);
+      const vectorToAdd = new Vector2(3, 4);
+
+      vector.add(vectorToAdd);
+
+      expect(vector).toMatchObject({ x: 4, y: 6 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const vectorToAdd = new Vector2();
+
+      const result = vector.add(vectorToAdd);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('#addScalar', () => {
+    it('adds a scalar to the vector', () => {
+      const vector = new Vector2(1, 2);
+
+      vector.addScalar(3);
+
+      expect(vector).toMatchObject({ x: 4, y: 5 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.addScalar(1);
+
+      expect(result).toEqual(vector);
+    });
+  });
+
+  describe('#addValues', () => {
+    it('adds values to the vector', () => {
+      const vector = new Vector2(1, 2);
+
+      vector.addValues(3, 4);
+
+      expect(vector).toMatchObject({ x: 4, y: 6 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.addValues(1, 2);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('#addVectors', () => {
+    it('sets the vector to the addition of two vectors', () => {
+      const vector = new Vector2();
+      const u = new Vector2(1, 2);
+      const v = new Vector2(3, 4);
+
+      vector.addVectors(u, v);
+
+      expect(vector).toMatchObject({ x: 4, y: 6 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const u = new Vector2();
+      const v = new Vector2();
+
+      const result = vector.addVectors(u, v);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x and y components equal to zero', () => {
