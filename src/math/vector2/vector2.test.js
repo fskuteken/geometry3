@@ -218,6 +218,42 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#multiplyScalar', () => {
+    it('multiplies the vector by a scalar', () => {
+      const vector = new Vector2(1, 2);
+
+      vector.multiplyScalar(2);
+
+      expect(vector).toMatchObject({ x: 2, y: 4 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.multiplyScalar(1);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('#divideScalar', () => {
+    it('divides the vector by a scalar', () => {
+      const vector = new Vector2(2, 4);
+
+      vector.divideScalar(2);
+
+      expect(vector).toMatchObject({ x: 1, y: 2 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.divideScalar(1);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x and y components equal to zero', () => {

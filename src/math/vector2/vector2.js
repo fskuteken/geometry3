@@ -73,6 +73,20 @@ export default class Vector2 {
 
     return this;
   }
+
+  multiplyScalar(s) {
+    this.x *= s;
+    this.y *= s;
+
+    return this;
+  }
+
+  divideScalar(s) {
+    this.x /= s;
+    this.y /= s;
+
+    return this;
+  }
 }
 
 Vector2.zero = new Vector2(0, 0);
