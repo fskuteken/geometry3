@@ -14,5 +14,13 @@
   "bugs": {
     "url": "https://github.com/fskuteken/geometry3/issues"
   },
-  "homepage": "https://github.com/fskuteken/geometry3#readme"
+  "homepage": "https://github.com/fskuteken/geometry3#readme",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
 }
