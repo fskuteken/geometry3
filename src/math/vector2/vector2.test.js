@@ -62,6 +62,17 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#clone', () => {
+    it('creates a clone of the vector', () => {
+      const vector = new Vector2(1, 2);
+
+      const result = vector.clone();
+
+      expect(result).toMatchObject(vector);
+      expect(result).not.toBe(vector);
+    });
+  });
+
   describe('#add', () => {
     it('adds the values from another vector', () => {
       const vector = new Vector2(1, 2);

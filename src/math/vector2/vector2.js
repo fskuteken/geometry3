@@ -18,6 +18,10 @@ export default class Vector2 {
     return this;
   }
 
+  clone() {
+    return new Vector2(this.x, this.y);
+  }
+
   add(vector) {
     this.x += vector.x;
     this.y += vector.y;
