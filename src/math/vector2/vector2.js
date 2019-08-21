@@ -3,6 +3,13 @@ export default class Vector2 {
     this.x = x;
     this.y = y;
   }
+
+  set(x, y) {
+    this.x = x;
+    this.y = y;
+
+    return this;
+  }
 }
 
 Vector2.zero = new Vector2(0, 0);

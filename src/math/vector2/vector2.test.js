@@ -22,6 +22,26 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#set', () => {
+    it('sets the x and y values of the vector', () => {
+      const x = 1;
+      const y = 2;
+      const vector = new Vector2();
+
+      vector.set(x, y);
+
+      expect(vector).toMatchObject({ x, y });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.set(1, 2);
+
+      expect(result).toEqual(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x and y components equal to zero', () => {
