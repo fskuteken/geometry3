@@ -12,5 +12,13 @@ describe('Vector2', () => {
         expect(vector).toMatchObject({ x, y });
       });
     });
+
+    describe('when no arguments are supplied', () => {
+      it('initializes a new Vector2 with default values', () => {
+        const vector = new Vector2();
+
+        expect(vector).toMatchObject({ x: 0, y: 0 });
+      });
+    });
   });
 });
