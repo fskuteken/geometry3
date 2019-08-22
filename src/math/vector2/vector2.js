@@ -22,6 +22,13 @@ export default class Vector2 {
     return new Vector2(this.x, this.y);
   }
 
+  negate() {
+    this.x = -this.x;
+    this.y = -this.y;
+
+    return this;
+  }
+
   add(vector) {
     this.x += vector.x;
     this.y += vector.y;
