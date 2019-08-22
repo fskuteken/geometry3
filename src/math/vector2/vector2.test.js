@@ -91,6 +91,26 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#negateVector', () => {
+    it('negates the values of another vector', () => {
+      const vector = new Vector2();
+      const vectorToNegate = new Vector2(1, 2);
+
+      vector.negateVector(vectorToNegate);
+
+      expect(vector).toMatchObject({ x: -1, y: -2 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const vectorToNegate = new Vector2();
+
+      const result = vector.negateVector(vectorToNegate);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('#add', () => {
     it('adds the values from another vector', () => {
       const vector = new Vector2(1, 2);
