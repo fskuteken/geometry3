@@ -1,4 +1,5 @@
 import Vector4 from '../../src/math/vector4';
+import Matrix4 from '../../src/math/matrix4';
 
 describe('Vector4', () => {
   describe('constructor', () => {
@@ -387,6 +388,68 @@ describe('Vector4', () => {
       const vector = new Vector4();
 
       const result = vector.normalize();
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transform', () => {
+    it('transforms the vector with a 4x4 matrix', () => {
+      const vector = new Vector4(1, 2, 3, 4);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 4,
+        1, 2, 4, 3,
+        1, 3, 2, 4,
+        1, 3, 4, 2,
+      );
+
+      vector.transform(matrix);
+
+      expect(vector).toMatchObject({ x: 30, y: 29, z: 29, w: 27 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector4(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 4,
+        1, 2, 4, 3,
+        1, 3, 2, 4,
+        1, 3, 4, 2,
+      );
+
+      const result = vector.transform(matrix);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transformVector', () => {
+    it('transforms another vector with a 4x4 matrix', () => {
+      const vector = new Vector4();
+      const vectorToTransform = new Vector4(1, 2, 3, 4);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 4,
+        1, 2, 4, 3,
+        1, 3, 2, 4,
+        1, 3, 4, 2,
+      );
+
+      vector.transformVector(vectorToTransform, matrix);
+
+      expect(vector).toMatchObject({ x: 30, y: 29, z: 29, w: 27 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector4();
+      const vectorToTransform = new Vector4();
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 4,
+        1, 2, 4, 3,
+        1, 3, 2, 4,
+        1, 3, 4, 2,
+      );
+
+      const result = vector.transformVector(vectorToTransform, matrix);
 
       expect(result).toBe(vector);
     });

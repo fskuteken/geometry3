@@ -18,6 +18,7 @@
     },
     "plugins": ["jest"],
     "rules": {
+        "object-curly-newline": ["error", { "consistent": true }]
     },
     "overrides": [
         {

@@ -156,6 +156,30 @@ export default class Vector4 {
 
     return this;
   }
+
+  transform(matrix4) {
+    const { x, y, z, w } = this;
+    const v = matrix4.values;
+
+    this.x = x * v[0] + y * v[4] + z * v[8] + w * v[12];
+    this.y = x * v[1] + y * v[5] + z * v[9] + w * v[13];
+    this.z = x * v[2] + y * v[6] + z * v[10] + w * v[14];
+    this.w = x * v[3] + y * v[7] + z * v[11] + w * v[15];
+
+    return this;
+  }
+
+  transformVector(vector, matrix3) {
+    const { x, y, z, w } = vector;
+    const v = matrix3.values;
+
+    this.x = x * v[0] + y * v[4] + z * v[8] + w * v[12];
+    this.y = x * v[1] + y * v[5] + z * v[9] + w * v[13];
+    this.z = x * v[2] + y * v[6] + z * v[10] + w * v[14];
+    this.w = x * v[3] + y * v[7] + z * v[11] + w * v[15];
+
+    return this;
+  }
 }
 
 Vector4.zero = new Vector4(0, 0, 0, 0);
