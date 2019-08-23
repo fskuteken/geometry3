@@ -1,5 +1,6 @@
 import Vector3 from '../../src/math/vector3';
 import Matrix3 from '../../src/math/matrix3';
+import Matrix4 from '../../src/math/matrix4';
 
 describe('Vector3', () => {
   describe('constructor', () => {
@@ -394,6 +395,130 @@ describe('Vector3', () => {
       const matrix = new Matrix3();
 
       const result = vector.transformVector(vectorToTransform, matrix);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transformPosition', () => {
+    it('transforms the vector with a 4x4 matrix, treating it as a position', () => {
+      const vector = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      vector.transformPosition(matrix);
+
+      expect(vector).toMatchObject({ x: 24, y: 33, z: 40 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      const result = vector.transform(matrix);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transformPositionVector', () => {
+    it('transforms another vector with a 4x4 matrix, treating it as a position', () => {
+      const vector = new Vector3();
+      const vectorToTransform = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      vector.transformPositionVector(vectorToTransform, matrix);
+
+      expect(vector).toMatchObject({ x: 24, y: 33, z: 40 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3();
+      const vectorToTransform = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      const result = vector.transformPositionVector(vectorToTransform, matrix);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transformDirection', () => {
+    it('transforms the vector with a 4x4 matrix, treating it as a direction', () => {
+      const vector = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      vector.transformDirection(matrix);
+
+      expect(vector).toMatchObject({ x: 14, y: 13, z: 10 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      const result = vector.transformDirection(matrix);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transformDirectionVector', () => {
+    it('transforms another vector with a 3x3 matrix, treating it as a direction', () => {
+      const vector = new Vector3();
+      const vectorToTransform = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      vector.transformDirectionVector(vectorToTransform, matrix);
+
+      expect(vector).toMatchObject({ x: 14, y: 13, z: 10 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3();
+      const vectorToTransform = new Vector3(1, 2, 3);
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 10,
+        1, 3, 2, 20,
+        3, 2, 1, 30,
+        0, 0, 0, 1,
+      );
+
+      const result = vector.transformDirectionVector(vectorToTransform, matrix);
 
       expect(result).toBe(vector);
     });

@@ -162,6 +162,50 @@ export default class Vector3 {
 
     return this;
   }
+
+  transformPosition(matrix4) {
+    const { x, y, z } = this;
+    const v = matrix4.values;
+
+    this.x = x * v[0] + y * v[4] + z * v[8] + v[12];
+    this.y = x * v[1] + y * v[5] + z * v[9] + v[13];
+    this.z = x * v[2] + y * v[6] + z * v[10] + v[14];
+
+    return this;
+  }
+
+  transformPositionVector(vector, matrix4) {
+    const { x, y, z } = vector;
+    const v = matrix4.values;
+
+    this.x = x * v[0] + y * v[4] + z * v[8] + v[12];
+    this.y = x * v[1] + y * v[5] + z * v[9] + v[13];
+    this.z = x * v[2] + y * v[6] + z * v[10] + v[14];
+
+    return this;
+  }
+
+  transformDirection(matrix4) {
+    const { x, y, z } = this;
+    const v = matrix4.values;
+
+    this.x = x * v[0] + y * v[4] + z * v[8];
+    this.y = x * v[1] + y * v[5] + z * v[9];
+    this.z = x * v[2] + y * v[6] + z * v[10];
+
+    return this;
+  }
+
+  transformDirectionVector(vector, matrix4) {
+    const { x, y, z } = vector;
+    const v = matrix4.values;
+
+    this.x = x * v[0] + y * v[4] + z * v[8];
+    this.y = x * v[1] + y * v[5] + z * v[9];
+    this.z = x * v[2] + y * v[6] + z * v[10];
+
+    return this;
+  }
 }
 
 Vector3.zero = new Vector3(0, 0, 0);
