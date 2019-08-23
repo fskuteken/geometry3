@@ -1,4 +1,5 @@
 import Vector3 from '../../src/math/vector3';
+import Matrix3 from '../../src/math/matrix3';
 
 describe('Vector3', () => {
   describe('constructor', () => {
@@ -351,6 +352,48 @@ describe('Vector3', () => {
       const vector = new Vector3();
 
       const result = vector.normalize();
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transform', () => {
+    it('transforms the vector with a 3x3 matrix', () => {
+      const vector = new Vector3(1, 2, 3);
+      const matrix = Matrix3.fromValues(1, 2, 3, 1, 3, 2, 3, 2, 1);
+
+      vector.transform(matrix);
+
+      expect(vector).toMatchObject({ x: 14, y: 13, z: 10 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3(1, 2, 3);
+      const matrix = Matrix3.fromValues(1, 2, 3, 1, 3, 2, 3, 2, 1);
+
+      const result = vector.transform(matrix);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('transformVector', () => {
+    it('transforms another vector with a 3x3 matrix', () => {
+      const vector = new Vector3();
+      const vectorToTransform = new Vector3(1, 2, 3);
+      const matrix = Matrix3.fromValues(1, 2, 3, 1, 3, 2, 3, 2, 1);
+
+      vector.transformVector(vectorToTransform, matrix);
+
+      expect(vector).toMatchObject({ x: 14, y: 13, z: 10 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3();
+      const vectorToTransform = new Vector3();
+      const matrix = new Matrix3();
+
+      const result = vector.transformVector(vectorToTransform, matrix);
 
       expect(result).toBe(vector);
     });

@@ -140,6 +140,28 @@ export default class Vector3 {
 
     return this;
   }
+
+  transform(matrix3) {
+    const { x, y, z } = this;
+    const v = matrix3.values;
+
+    this.x = x * v[0] + y * v[3] + z * v[6];
+    this.y = x * v[1] + y * v[4] + z * v[7];
+    this.z = x * v[2] + y * v[5] + z * v[8];
+
+    return this;
+  }
+
+  transformVector(vector, matrix3) {
+    const { x, y, z } = vector;
+    const v = matrix3.values;
+
+    this.x = x * v[0] + y * v[3] + z * v[6];
+    this.y = x * v[1] + y * v[4] + z * v[7];
+    this.z = x * v[2] + y * v[5] + z * v[8];
+
+    return this;
+  }
 }
 
 Vector3.zero = new Vector3(0, 0, 0);
