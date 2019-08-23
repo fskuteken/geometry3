@@ -1,4 +1,4 @@
-import Vector4 from './vector4';
+import Vector4 from '../../src/math/vector4';
 
 describe('Vector4', () => {
   describe('constructor', () => {

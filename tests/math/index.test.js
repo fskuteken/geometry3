@@ -1,7 +1,7 @@
-import Math from './index';
-import Vector2 from './vector2';
-import Vector3 from './vector3';
-import Vector4 from './vector4';
+import Math from '../../src/math/index';
+import Vector2 from '../../src/math/vector2';
+import Vector3 from '../../src/math/vector3';
+import Vector4 from '../../src/math/vector4';
 
 describe('Math', () => {
   it('exports the Vector2 class', () => {
