@@ -106,6 +106,10 @@ export default class Vector2 {
     return this;
   }
 
+  dot(vector) {
+    return this.x * vector.x + this.y * vector.y;
+  }
+
   length() {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   }

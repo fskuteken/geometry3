@@ -121,6 +121,10 @@ export default class Vector3 {
     return this;
   }
 
+  dot(vector) {
+    return this.x * vector.x + this.y * vector.y + this.z * vector.z;
+  }
+
   length() {
     return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
   }

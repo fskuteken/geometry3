@@ -303,6 +303,17 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#dot', () => {
+    it('returns the dot product with another vector', () => {
+      const vector1 = new Vector2(1, 2);
+      const vector2 = new Vector2(3, 4);
+
+      const result = vector1.dot(vector2);
+
+      expect(result).toEqual(11);
+    });
+  });
+
   describe('#length', () => {
     it('returns the length of the vector', () => {
       const vector = new Vector2(3, 4);
