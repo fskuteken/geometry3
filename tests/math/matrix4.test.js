@@ -133,6 +133,56 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#multiply', () => {
+    it('sets the matrix to the multiplication of itself and another matrix', () => {
+      const matrix = Matrix4.fromValues(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
+      const other = Matrix4.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+
+      matrix.multiply(other);
+
+      expect(matrix.values).toEqual([
+        2, 10, 18, 13,
+        4, 12, 20, 14,
+        6, 14, 22, 15,
+        8, 16, 24, 16,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+      const other = new Matrix4();
+
+      const result = matrix.multiply(other);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#premultiply', () => {
+    it('sets the matrix to the multiplication of another matrix and itself', () => {
+      const matrix = Matrix4.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+      const other = Matrix4.fromValues(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
+
+      matrix.premultiply(other);
+
+      expect(matrix.values).toEqual([
+        2, 10, 18, 13,
+        4, 12, 20, 14,
+        6, 14, 22, 15,
+        8, 16, 24, 16,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+      const other = new Matrix4();
+
+      const result = matrix.premultiply(other);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('#multiplyMatrices', () => {
     it('sets the matrix to the multiplication of two matrices', () => {
       const matrix = new Matrix4();

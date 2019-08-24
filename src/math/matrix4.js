@@ -164,6 +164,90 @@ export default class Matrix4 {
   }
 
   /**
+   * Post-multiplies another matrix, and sets this matrix to the result.
+   * @param {Matrix4} a The matrix to post-multiply with.
+   * @returns {Matrix4} The matrix.
+   */
+  multiply(matrix) {
+    const m = matrix.values;
+    const t = this.values;
+
+    const a00 = t[0], a01 = t[4], a02 = t[8], a03 = t[12];
+    const a10 = t[1], a11 = t[5], a12 = t[9], a13 = t[13];
+    const a20 = t[2], a21 = t[6], a22 = t[10], a23 = t[14];
+    const a30 = t[3], a31 = t[7], a32 = t[11], a33 = t[15];
+
+    const b00 = m[0], b01 = m[4], b02 = m[8], b03 = m[12];
+    const b10 = m[1], b11 = m[5], b12 = m[9], b13 = m[13];
+    const b20 = m[2], b21 = m[6], b22 = m[10], b23 = m[14];
+    const b30 = m[3], b31 = m[7], b32 = m[11], b33 = m[15];
+
+    t[0] = a00 * b00 + a01 * b10 + a02 * b20 + a03 * b30;
+    t[4] = a00 * b01 + a01 * b11 + a02 * b21 + a03 * b31;
+    t[8] = a00 * b02 + a01 * b12 + a02 * b22 + a03 * b32;
+    t[12] = a00 * b03 + a01 * b13 + a02 * b23 + a03 * b33;
+
+    t[1] = a10 * b00 + a11 * b10 + a12 * b20 + a13 * b30;
+    t[5] = a10 * b01 + a11 * b11 + a12 * b21 + a13 * b31;
+    t[9] = a10 * b02 + a11 * b12 + a12 * b22 + a13 * b32;
+    t[13] = a10 * b03 + a11 * b13 + a12 * b23 + a13 * b33;
+
+    t[2] = a20 * b00 + a21 * b10 + a22 * b20 + a23 * b30;
+    t[6] = a20 * b01 + a21 * b11 + a22 * b21 + a23 * b31;
+    t[10] = a20 * b02 + a21 * b12 + a22 * b22 + a23 * b32;
+    t[14] = a20 * b03 + a21 * b13 + a22 * b23 + a23 * b33;
+
+    t[3] = a30 * b00 + a31 * b10 + a32 * b20 + a33 * b30;
+    t[7] = a30 * b01 + a31 * b11 + a32 * b21 + a33 * b31;
+    t[11] = a30 * b02 + a31 * b12 + a32 * b22 + a33 * b32;
+    t[15] = a30 * b03 + a31 * b13 + a32 * b23 + a33 * b33;
+
+    return this;
+  }
+
+  /**
+   * Pre-multiplies another matrix, and sets this matrix to the result.
+   * @param {Matrix4} a The matrix to pre-multiply with.
+   * @returns {Matrix4} The matrix.
+   */
+  premultiply(matrix) {
+    const m = matrix.values;
+    const t = this.values;
+
+    const a00 = m[0], a01 = m[4], a02 = m[8], a03 = m[12];
+    const a10 = m[1], a11 = m[5], a12 = m[9], a13 = m[13];
+    const a20 = m[2], a21 = m[6], a22 = m[10], a23 = m[14];
+    const a30 = m[3], a31 = m[7], a32 = m[11], a33 = m[15];
+
+    const b00 = t[0], b01 = t[4], b02 = t[8], b03 = t[12];
+    const b10 = t[1], b11 = t[5], b12 = t[9], b13 = t[13];
+    const b20 = t[2], b21 = t[6], b22 = t[10], b23 = t[14];
+    const b30 = t[3], b31 = t[7], b32 = t[11], b33 = t[15];
+
+    t[0] = a00 * b00 + a01 * b10 + a02 * b20 + a03 * b30;
+    t[4] = a00 * b01 + a01 * b11 + a02 * b21 + a03 * b31;
+    t[8] = a00 * b02 + a01 * b12 + a02 * b22 + a03 * b32;
+    t[12] = a00 * b03 + a01 * b13 + a02 * b23 + a03 * b33;
+
+    t[1] = a10 * b00 + a11 * b10 + a12 * b20 + a13 * b30;
+    t[5] = a10 * b01 + a11 * b11 + a12 * b21 + a13 * b31;
+    t[9] = a10 * b02 + a11 * b12 + a12 * b22 + a13 * b32;
+    t[13] = a10 * b03 + a11 * b13 + a12 * b23 + a13 * b33;
+
+    t[2] = a20 * b00 + a21 * b10 + a22 * b20 + a23 * b30;
+    t[6] = a20 * b01 + a21 * b11 + a22 * b21 + a23 * b31;
+    t[10] = a20 * b02 + a21 * b12 + a22 * b22 + a23 * b32;
+    t[14] = a20 * b03 + a21 * b13 + a22 * b23 + a23 * b33;
+
+    t[3] = a30 * b00 + a31 * b10 + a32 * b20 + a33 * b30;
+    t[7] = a30 * b01 + a31 * b11 + a32 * b21 + a33 * b31;
+    t[11] = a30 * b02 + a31 * b12 + a32 * b22 + a33 * b32;
+    t[15] = a30 * b03 + a31 * b13 + a32 * b23 + a33 * b33;
+
+    return this;
+  }
+
+  /**
    * Sets the matrix to the multiplication of two matrices.
    * @param {Matrix4} a The first matrix.
    * @param {Matrix4} b The second matrix.
