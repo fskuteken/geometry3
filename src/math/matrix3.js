@@ -43,6 +43,28 @@ export default class Matrix3 {
   }
 
   /**
+   * Compares if the elements of the matrix are equal to the elements of another matrix.
+   * @param {Matrix3} matrix The matrix to compare the components to.
+   * @returns {Boolean} A value indicating whether all the elements are equal.
+   */
+  equals(matrix) {
+    const m = matrix.values;
+    const t = this.values;
+
+    return (
+      m[0] === t[0]
+      && m[1] === t[1]
+      && m[2] === t[2]
+      && m[3] === t[3]
+      && m[4] === t[4]
+      && m[5] === t[5]
+      && m[6] === t[6]
+      && m[7] === t[7]
+      && m[8] === t[8]
+    );
+  }
+
+  /**
    * Sets the elements of the matrix.
    * @param {Number} a00 The element at row 0 and column 0.
    * @param {Number} a01 The element at row 0 and column 1.

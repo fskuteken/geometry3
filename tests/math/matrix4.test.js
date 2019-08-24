@@ -27,6 +27,35 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#equals', () => {
+    describe('when all elements of the matrices are equal', () => {
+      it('returns true', () => {
+        const values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+        const matrix = Matrix4.fromValues(...values);
+        const matrixToCompare = Matrix4.fromValues(...values);
+
+        const result = matrix.equals(matrixToCompare);
+
+        expect(result).toEqual(true);
+      });
+    });
+
+    describe('when any elements of the matrices are not equal', () => {
+      it('returns false', () => {
+        const matrix = Matrix4.fromValues(
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+        );
+        const matrixToCompare = Matrix4.fromValues(
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0,
+        );
+
+        const result = matrix.equals(matrixToCompare);
+
+        expect(result).toEqual(false);
+      });
+    });
+  });
+
   describe('#set', () => {
     it('sets the values of the matrix', () => {
       const matrix = new Matrix4();
