@@ -118,6 +118,20 @@ export default class Vector2 {
     return this.x * this.x + this.y * this.y;
   }
 
+  distanceTo(vector) {
+    const distX = this.x - vector.x;
+    const distY = this.y - vector.y;
+
+    return Math.sqrt(distX * distX + distY * distY);
+  }
+
+  distanceToSquared(vector) {
+    const distX = this.x - vector.x;
+    const distY = this.y - vector.y;
+
+    return distX * distX + distY * distY;
+  }
+
   normalize() {
     const length = Math.sqrt(this.x * this.x + this.y * this.y);
 

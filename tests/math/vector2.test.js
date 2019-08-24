@@ -334,6 +334,28 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#distanceTo', () => {
+    test('returns the distance to another vector', () => {
+      const vector = new Vector2(1, 2);
+      const other = new Vector2(3, 4);
+
+      const result = vector.distanceTo(other);
+
+      expect(result).toBe(Math.sqrt(8));
+    });
+  });
+
+  describe('#distanceToSquared', () => {
+    test('returns the squared distance to another vector', () => {
+      const vector = new Vector2(1, 2);
+      const other = new Vector2(3, 4);
+
+      const result = vector.distanceToSquared(other);
+
+      expect(result).toBe(8);
+    });
+  });
+
   describe('#normalize', () => {
     describe('when the length of the vector is zero', () => {
       it('does nothing', () => {

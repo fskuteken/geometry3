@@ -148,6 +148,24 @@ export default class Vector4 {
     return this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w;
   }
 
+  distanceTo(vector) {
+    const distX = this.x - vector.x;
+    const distY = this.y - vector.y;
+    const distZ = this.z - vector.z;
+    const distW = this.w - vector.w;
+
+    return Math.sqrt(distX * distX + distY * distY + distZ * distZ + distW * distW);
+  }
+
+  distanceToSquared(vector) {
+    const distX = this.x - vector.x;
+    const distY = this.y - vector.y;
+    const distZ = this.z - vector.z;
+    const distW = this.w - vector.w;
+
+    return distX * distX + distY * distY + distZ * distZ + distW * distW;
+  }
+
   normalize() {
     const length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
 

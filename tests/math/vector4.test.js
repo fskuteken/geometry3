@@ -369,6 +369,28 @@ describe('Vector4', () => {
     });
   });
 
+  describe('#distanceTo', () => {
+    test('returns the distance to another vector', () => {
+      const vector = new Vector4(1, 2, 3, 4);
+      const other = new Vector4(5, 6, 7, 8);
+
+      const result = vector.distanceTo(other);
+
+      expect(result).toBe(Math.sqrt(64));
+    });
+  });
+
+  describe('#distanceToSquared', () => {
+    test('returns the squared distance to another vector', () => {
+      const vector = new Vector4(1, 2, 3, 4);
+      const other = new Vector4(5, 6, 7, 8);
+
+      const result = vector.distanceToSquared(other);
+
+      expect(result).toBe(64);
+    });
+  });
+
   describe('#normalize', () => {
     describe('when the length of the vector is zero', () => {
       it('does nothing', () => {

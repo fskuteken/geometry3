@@ -360,6 +360,28 @@ describe('Vector3', () => {
     });
   });
 
+  describe('#distanceTo', () => {
+    test('returns the distance to another vector', () => {
+      const vector = new Vector3(1, 2, 3);
+      const other = new Vector3(4, 6, 8);
+
+      const result = vector.distanceTo(other);
+
+      expect(result).toBe(Math.sqrt(50));
+    });
+  });
+
+  describe('#distanceToSquared', () => {
+    test('returns the squared distance to another vector', () => {
+      const vector = new Vector3(1, 2, 3);
+      const other = new Vector3(4, 6, 8);
+
+      const result = vector.distanceToSquared(other);
+
+      expect(result).toBe(50);
+    });
+  });
+
   describe('#normalize', () => {
     describe('when the length of the vector is zero', () => {
       it('does nothing', () => {

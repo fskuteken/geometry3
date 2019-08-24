@@ -141,6 +141,22 @@ export default class Vector3 {
     return this.x * this.x + this.y * this.y + this.z * this.z;
   }
 
+  distanceTo(vector) {
+    const distX = this.x - vector.x;
+    const distY = this.y - vector.y;
+    const distZ = this.z - vector.z;
+
+    return Math.sqrt(distX * distX + distY * distY + distZ * distZ);
+  }
+
+  distanceToSquared(vector) {
+    const distX = this.x - vector.x;
+    const distY = this.y - vector.y;
+    const distZ = this.z - vector.z;
+
+    return distX * distX + distY * distY + distZ * distZ;
+  }
+
   normalize() {
     const length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
 
