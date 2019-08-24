@@ -1,31 +1,31 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-        "airbnb-base",
-        "plugin:jest/recommended"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": ["jest"],
-    "rules": {
-        "object-curly-newline": ["error", { "consistent": true }]
-    },
-    "overrides": [
-        {
-            "files": ["*.test.js"],
-            "env": {
-                "jest": true
-            }
-        }
-    ]
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:jest/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["jest"],
+  "rules": {
+    "object-curly-newline": ["error", { "consistent": true }]
+  },
+  "overrides": [
+    {
+      "files": ["*.test.js"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
