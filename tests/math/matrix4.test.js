@@ -1,4 +1,5 @@
 import Matrix4 from '../../src/math/matrix4';
+import Vector3 from '../../src/math/vector3';
 
 describe('Matrix4', () => {
   describe('constructor', () => {
@@ -283,6 +284,104 @@ describe('Matrix4', () => {
       const matrix = new Matrix4();
 
       const result = matrix.makeRotationZ(0);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#makeScale', () => {
+    it('sets the matrix to a scale matrix', () => {
+      const matrix = new Matrix4();
+      const scale = new Vector3(2, 3, 4);
+
+      matrix.makeScale(scale);
+
+      expect(matrix.elements).toEqual([
+        scale.x, 0, 0, 0,
+        0, scale.y, 0, 0,
+        0, 0, scale.z, 0,
+        0, 0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+      const scale = new Vector3();
+
+      const result = matrix.makeScale(scale);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#makeScaleValues', () => {
+    it('sets the matrix to a scale matrix', () => {
+      const matrix = new Matrix4();
+      const x = 2, y = 3, z = 4;
+
+      matrix.makeScaleValues(x, y, z);
+
+      expect(matrix.elements).toEqual([
+        x, 0, 0, 0,
+        0, y, 0, 0,
+        0, 0, z, 0,
+        0, 0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.makeScaleValues(2, 3, 4);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#makeTranslation', () => {
+    it('sets the matrix to a translation matrix', () => {
+      const matrix = new Matrix4();
+      const translation = new Vector3(2, 3, 4);
+
+      matrix.makeTranslation(translation);
+
+      expect(matrix.elements).toEqual([
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        translation.x, translation.y, translation.z, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+      const scale = new Vector3();
+
+      const result = matrix.makeScale(scale);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#makeTranslationValues', () => {
+    it('sets the matrix to a translation matrix', () => {
+      const matrix = new Matrix4();
+      const x = 2, y = 3, z = 4;
+
+      matrix.makeTranslationValues(x, y, z);
+
+      expect(matrix.elements).toEqual([
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        x, y, z, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.makeTranslationValues(2, 3, 4);
 
       expect(result).toBe(matrix);
     });

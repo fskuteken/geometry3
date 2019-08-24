@@ -341,6 +341,66 @@ export default class Matrix4 {
       0, 0, 0, 1,
     );
   }
+
+  /**
+   * Sets the matrix to a scale matrix.
+   * @param {Vector3} scale The vector containing the scale values.
+   * @returns {Matrix4} The matrix.
+   */
+  makeScale(scale) {
+    return this.set(
+      scale.x, 0, 0, 0,
+      0, scale.y, 0, 0,
+      0, 0, scale.z, 0,
+      0, 0, 0, 1,
+    );
+  }
+
+  /**
+   * Sets the matrix to a scale matrix.
+   * @param {Number} x The scale along the x axis.
+   * @param {Number} y The scale along the y axis.
+   * @param {Number} z The scale along the z axis.
+   * @returns {Matrix4} The matrix.
+   */
+  makeScaleValues(x, y, z) {
+    return this.set(
+      x, 0, 0, 0,
+      0, y, 0, 0,
+      0, 0, z, 0,
+      0, 0, 0, 1,
+    );
+  }
+
+  /**
+   * Sets the matrix to a translation matrix.
+   * @param {Vector3} translation The vector containing the translation values.
+   * @returns {Matrix4} The matrix.
+   */
+  makeTranslation(translation) {
+    return this.set(
+      1, 0, 0, translation.x,
+      0, 1, 0, translation.y,
+      0, 0, 1, translation.z,
+      0, 0, 0, 1,
+    );
+  }
+
+  /**
+   * Sets the matrix to a translation matrix.
+   * @param {Number} x The translation along the x axis.
+   * @param {Number} y The translation along the y axis.
+   * @param {Number} z The translation along the z axis.
+   * @returns {Matrix4} The matrix.
+   */
+  makeTranslationValues(x, y, z) {
+    return this.set(
+      1, 0, 0, x,
+      0, 1, 0, y,
+      0, 0, 1, z,
+      0, 0, 0, 1,
+    );
+  }
 }
 
 /**
