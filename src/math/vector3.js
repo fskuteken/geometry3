@@ -125,6 +125,14 @@ export default class Vector3 {
     return this.x * vector.x + this.y * vector.y + this.z * vector.z;
   }
 
+  crossVectors(u, v) {
+    this.x = u.y * v.z - u.z * v.y;
+    this.y = u.z * v.x - u.x * v.z;
+    this.z = u.x * v.y - u.y * v.x;
+
+    return this;
+  }
+
   length() {
     return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
   }

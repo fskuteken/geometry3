@@ -318,6 +318,28 @@ describe('Vector3', () => {
     });
   });
 
+  describe('#crossVectors', () => {
+    it('sets the vector to the cross product between two other vectors', () => {
+      const vector = new Vector3();
+      const u = new Vector3(2, 0, 0);
+      const v = new Vector3(0, 2, 0);
+
+      vector.crossVectors(u, v);
+
+      expect(vector).toMatchObject({ x: 0, y: 0, z: 4 });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3();
+      const u = new Vector3();
+      const v = new Vector3();
+
+      const result = vector.crossVectors(u, v);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('#length', () => {
     it('returns the length of the vector', () => {
       const vector = new Vector3(3, 4, 5);
