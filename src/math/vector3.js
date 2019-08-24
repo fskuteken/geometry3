@@ -1,10 +1,27 @@
+/**
+ * A 3D vector.
+ * It has x, y and z components.
+ */
 export default class Vector3 {
+  /**
+   * Creates a new vector.
+   * @param {Number} x The x component. The default is 0.
+   * @param {Number} y The y component. The default is 0.
+   * @param {Number} z The z component. The default is 0.
+   */
   constructor(x = 0, y = 0, z = 0) {
     this.x = x;
     this.y = y;
     this.z = z;
   }
 
+  /**
+   * Sets the x, y and z components of the vector.
+   * @param {Number} x The x component.
+   * @param {Number} y The y component.
+   * @param {Number} z The z component.
+   * @returns {Vector3} The vector.
+   */
   set(x, y, z) {
     this.x = x;
     this.y = y;
@@ -13,24 +30,44 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Sets the x component of the vector.
+   * @param {Number} value The x component.
+   * @returns {Vector3} The vector.
+   */
   setX(value) {
     this.x = value;
 
     return this;
   }
 
+  /**
+   * Sets the y component of the vector.
+   * @param {Number} value The y component.
+   * @returns {Vector3} The vector.
+   */
   setY(value) {
     this.y = value;
 
     return this;
   }
 
+  /**
+   * Sets the z component of the vector.
+   * @param {Number} value The z component.
+   * @returns {Vector3} The vector.
+   */
   setZ(value) {
     this.z = value;
 
     return this;
   }
 
+  /**
+   * Copies the components of another vector.
+   * @param {Vector3} vector The vector to copy.
+   * @returns {Vector3} The vector.
+   */
   copy(vector) {
     this.x = vector.x;
     this.y = vector.y;
@@ -39,10 +76,18 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Creates a clone of the vector.
+   * @returns {Vector3} The cloned vector.
+   */
   clone() {
     return new Vector3(this.x, this.y, this.z);
   }
 
+  /**
+   * Negates the components of the vector.
+   * @returns {Vector3} The vector.
+   */
   negate() {
     this.x = -this.x;
     this.y = -this.y;
@@ -51,6 +96,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Sets the components to the negation of another vector.
+   * @param {Vector3} vector The vector to negate.
+   * @returns {Vector3} The vector.
+   */
   negateVector(vector) {
     this.x = -vector.x;
     this.y = -vector.y;
@@ -59,6 +109,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Adds the components of another vector.
+   * @param {Vector3} vector The vector to add.
+   * @returns {Vector3} The vector.
+   */
   add(vector) {
     this.x += vector.x;
     this.y += vector.y;
@@ -67,6 +122,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Adds a scalar to the x, y and z components of the vector.
+   * @param {Number} s The scalar to add.
+   * @returns {Vector3} The vector.
+   */
   addScalar(s) {
     this.x += s;
     this.y += s;
@@ -75,6 +135,13 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Adds a value to each component of the vector.
+   * @param {Number} x The value to add to the x component.
+   * @param {Number} y The value to add to the y component.
+   * @param {Number} z The value to add to the z component.
+   * @returns {Vector3} The vector.
+   */
   addValues(x, y, z) {
     this.x += x;
     this.y += y;
@@ -83,6 +150,12 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Sets the vector to the addition of two vectors.
+   * @param {Vector3} u The first vector.
+   * @param {Vector3} v The second vector.
+   * @returns {Vector3} The vector.
+   */
   addVectors(u, v) {
     this.x = u.x + v.x;
     this.y = u.y + v.y;
@@ -91,6 +164,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Subtracts the components of another vector.
+   * @param {Vector3} vector The vector to subtract.
+   * @returns {Vector3} The vector.
+   */
   subtract(vector) {
     this.x -= vector.x;
     this.y -= vector.y;
@@ -99,6 +177,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Subtracts a scalar from the x, y and z components of the vector.
+   * @param {Number} s The scalar to subtract.
+   * @returns {Vector3} The vector.
+   */
   subtractScalar(s) {
     this.x -= s;
     this.y -= s;
@@ -107,6 +190,13 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Subtracts a value from each component of the vector.
+   * @param {Number} x The value to subtract from the x component.
+   * @param {Number} y The value to subtract from the y component.
+   * @param {Number} z The value to subtract from the z component.
+   * @returns {Vector3} The vector.
+   */
   subtractValues(x, y, z) {
     this.x -= x;
     this.y -= y;
@@ -115,6 +205,12 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Sets the vector to the difference of two vectors.
+   * @param {Vector3} u The first vector.
+   * @param {Vector3} v The second vector.
+   * @returns {Vector3} The vector.
+   */
   subtractVectors(u, v) {
     this.x = u.x - v.x;
     this.y = u.y - v.y;
@@ -123,6 +219,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Multiplies the components of the vector by a scalar.
+   * @param {Number} s The scalar to multiply.
+   * @returns {Vector3} The vector.
+   */
   multiplyScalar(s) {
     this.x *= s;
     this.y *= s;
@@ -131,6 +232,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Divides the components of the vector by a scalar.
+   * @param {Number} s The scalar to divide.
+   * @returns {Vector3} The vector.
+   */
   divideScalar(s) {
     this.x /= s;
     this.y /= s;
@@ -139,10 +245,21 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Calculates the dot product with another vector.
+   * @param {Vector3} vector The vector to calculate the dot product with.
+   * @returns {Number} The dot product.
+   */
   dot(vector) {
     return this.x * vector.x + this.y * vector.y + this.z * vector.z;
   }
 
+  /**
+   * Sets the vector to the cross product between two vectors.
+   * @param {Vector3} u The first vector.
+   * @param {Vector3} v The second vector.
+   * @returns {Vector3} The vector.
+   */
   crossVectors(u, v) {
     this.x = u.y * v.z - u.z * v.y;
     this.y = u.z * v.x - u.x * v.z;
@@ -151,14 +268,27 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Calculates the length of the vector.
+   * @returns {Number} The length.
+   */
   length() {
     return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
   }
 
+  /**
+   * Calculates the squared length of the vector.
+   * @returns {Number} The squared length.
+   */
   lengthSquared() {
     return this.x * this.x + this.y * this.y + this.z * this.z;
   }
 
+  /**
+   * Calculates the distance to another vector.
+   * @param {Vector3} vector The vector to calculate the distance to.
+   * @returns {Number} The distance.
+   */
   distanceTo(vector) {
     const distX = this.x - vector.x;
     const distY = this.y - vector.y;
@@ -167,6 +297,11 @@ export default class Vector3 {
     return Math.sqrt(distX * distX + distY * distY + distZ * distZ);
   }
 
+  /**
+   * Calculates the squared distance to another vector.
+   * @param {Vector3} vector The vector to calculate the squared distance to.
+   * @returns {Number} The squared distance.
+   */
   distanceToSquared(vector) {
     const distX = this.x - vector.x;
     const distY = this.y - vector.y;
@@ -175,6 +310,11 @@ export default class Vector3 {
     return distX * distX + distY * distY + distZ * distZ;
   }
 
+  /**
+   * Normalizes the vector.
+   * When the vector length is 0, it does nothing.
+   * @returns {Vector3} The vector.
+   */
   normalize() {
     const length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
 
@@ -187,6 +327,11 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Transforms the vector by applying a Matrix3 to it.
+   * @param {Matrix3} matrix3 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
   transform(matrix3) {
     const { x, y, z } = this;
     const v = matrix3.values;
@@ -198,6 +343,12 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Sets the vector to the components of another vector transformed by a matrix.
+   * @param {Vector3} vector The vector to transform.
+   * @param {Matrix3} matrix3 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
   transformVector(vector, matrix3) {
     const { x, y, z } = vector;
     const v = matrix3.values;
@@ -209,6 +360,12 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Transforms the vector with a Matrix4.
+   * It considers the homogeneous coordinate as 1.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
   transformPosition(matrix4) {
     const { x, y, z } = this;
     const v = matrix4.values;
@@ -220,6 +377,13 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Sets the vector to the components of another vector transformed by a matrix.
+   * It considers the homogeneous coordinate as 1.
+   * @param {Vector3} vector The vector to transform.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
   transformPositionVector(vector, matrix4) {
     const { x, y, z } = vector;
     const v = matrix4.values;
@@ -231,6 +395,12 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Transforms the vector with a Matrix4.
+   * It considers the homogeneous coordinate as 0.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
   transformDirection(matrix4) {
     const { x, y, z } = this;
     const v = matrix4.values;
@@ -242,6 +412,13 @@ export default class Vector3 {
     return this;
   }
 
+  /**
+   * Sets the vector to the components of another vector transformed by a matrix.
+   * It considers the homogeneous coordinate as 0.
+   * @param {Vector3} vector The vector to transform.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
   transformDirectionVector(vector, matrix4) {
     const { x, y, z } = vector;
     const v = matrix4.values;
@@ -254,8 +431,27 @@ export default class Vector3 {
   }
 }
 
+/**
+ * A Vector3 with its x, y and z components equal to zero.
+ */
 Vector3.zero = new Vector3(0, 0, 0);
+
+/**
+ * A Vector3 with its x, y and z components equal to zero.
+ */
 Vector3.one = new Vector3(1, 1, 1);
+
+/**
+ * A unit Vector3 along the x axis.
+ */
 Vector3.unitX = new Vector3(1, 0, 0);
+
+/**
+ * A unit Vector3 along the y axis.
+ */
 Vector3.unitY = new Vector3(0, 1, 0);
+
+/**
+ * A unit Vector3 along the z axis.
+ */
 Vector3.unitZ = new Vector3(0, 0, 1);
