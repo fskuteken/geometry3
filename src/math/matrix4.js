@@ -118,6 +118,19 @@ export default class Matrix4 {
   }
 
   /**
+   * Sets the elements of the matrix to the identity.
+   * @returns {Matrix4} The matrix.
+   */
+  setIdentity() {
+    return this.set(
+      1, 0, 0, 0,
+      0, 1, 0, 0,
+      0, 0, 1, 0,
+      0, 0, 0, 1,
+    );
+  }
+
+  /**
    * Copies the elements from another matrix.
    * @param {Matrix4} matrix The matrix to copy the elements from.
    * @returns {Matrix4} The matrix.

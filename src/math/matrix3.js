@@ -92,6 +92,18 @@ export default class Matrix3 {
   }
 
   /**
+   * Sets the elements of the matrix to the identity.
+   * @returns {Matrix3} The matrix.
+   */
+  setIdentity() {
+    return this.set(
+      1, 0, 0,
+      0, 1, 0,
+      0, 0, 1,
+    );
+  }
+
+  /**
    * Copies the elements from another matrix.
    * @param {Matrix3} matrix The matrix to copy the elements from.
    * @returns {Matrix3} The matrix.

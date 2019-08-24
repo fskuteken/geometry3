@@ -72,6 +72,28 @@ describe('Matrix3', () => {
     });
   });
 
+  describe('#setIdentity', () => {
+    it('sets the elements of the matrix to the identity', () => {
+      const matrix = Matrix3.fromValues(0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+      matrix.setIdentity();
+
+      expect(matrix.values).toEqual([
+        1, 0, 0,
+        0, 1, 0,
+        0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix3();
+
+      const result = matrix.setIdentity();
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('#copy', () => {
     it('copies the values of another matrix', () => {
       const matrix = new Matrix3();

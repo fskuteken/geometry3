@@ -99,6 +99,29 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#setIdentity', () => {
+    it('sets the elements of the matrix to the identity', () => {
+      const matrix = Matrix4.fromValues(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+      matrix.setIdentity();
+
+      expect(matrix.values).toEqual([
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.setIdentity();
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('#clone', () => {
     it('creates a clone of the matrix', () => {
       const matrix = Matrix4.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
