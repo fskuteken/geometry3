@@ -29,6 +29,35 @@ describe('Vector4', () => {
     });
   });
 
+  describe('#equals', () => {
+    describe('when all components of the vectors are equal', () => {
+      it('returns true', () => {
+        const vector = new Vector4(1, 2, 3, 4);
+        const vectorToCompare = new Vector4(1, 2, 3, 4);
+
+        const result = vector.equals(vectorToCompare);
+
+        expect(result).toEqual(true);
+      });
+    });
+
+    describe('when any components of the vectors are not equal', () => {
+      it('returns false', () => {
+        const vector = new Vector4(1, 2, 3, 4);
+        const vectorsToCompare = [
+          new Vector4(0, 2, 3, 4), new Vector4(1, 0, 3, 4),
+          new Vector4(1, 2, 0, 4), new Vector4(1, 2, 3, 0),
+        ];
+
+        vectorsToCompare.forEach((vectorToCompare) => {
+          const result = vector.equals(vectorToCompare);
+
+          expect(result).toEqual(false);
+        });
+      });
+    });
+  });
+
   describe('#set', () => {
     it('sets the x, y, z and w values of the vector', () => {
       const x = 1;

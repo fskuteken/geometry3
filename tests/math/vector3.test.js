@@ -25,6 +25,34 @@ describe('Vector3', () => {
     });
   });
 
+  describe('#equals', () => {
+    describe('when all components of the vectors are equal', () => {
+      it('returns true', () => {
+        const vector = new Vector3(1, 2, 3);
+        const vectorToCompare = new Vector3(1, 2, 3);
+
+        const result = vector.equals(vectorToCompare);
+
+        expect(result).toEqual(true);
+      });
+    });
+
+    describe('when any components of the vectors are not equal', () => {
+      it('returns false', () => {
+        const vector = new Vector3(1, 2, 3);
+        const vectorsToCompare = [
+          new Vector3(0, 2, 3), new Vector3(1, 0, 3), new Vector3(1, 2, 0),
+        ];
+
+        vectorsToCompare.forEach((vectorToCompare) => {
+          const result = vector.equals(vectorToCompare);
+
+          expect(result).toEqual(false);
+        });
+      });
+    });
+  });
+
   describe('#set', () => {
     it('sets the x, y and z values of the vector', () => {
       const x = 1;

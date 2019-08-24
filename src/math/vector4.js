@@ -18,6 +18,15 @@ export default class Vector4 {
   }
 
   /**
+   * Compares if the components of the vector are equal to the components of another vector.
+   * @param {Vector4} vector The vector to compare the components to.
+   * @returns {Boolean} A value indicating whether all the components are equal.
+   */
+  equals(vector) {
+    return this.x === vector.x && this.y === vector.y && this.z === vector.z && this.w === vector.w;
+  }
+
+  /**
    * Sets the x, y, z and w components of the vector.
    * @param {Number} x The x component.
    * @param {Number} y The y component.
