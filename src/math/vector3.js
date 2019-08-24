@@ -13,6 +13,24 @@ export default class Vector3 {
     return this;
   }
 
+  setX(value) {
+    this.x = value;
+
+    return this;
+  }
+
+  setY(value) {
+    this.y = value;
+
+    return this;
+  }
+
+  setZ(value) {
+    this.z = value;
+
+    return this;
+  }
+
   copy(vector) {
     this.x = vector.x;
     this.y = vector.y;

@@ -42,6 +42,44 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#setX', () => {
+    it('sets the x value of the vector', () => {
+      const x = 1;
+      const vector = new Vector2();
+
+      vector.setX(x);
+
+      expect(vector.x).toEqual(x);
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.setX(1);
+
+      expect(result).toBe(vector);
+    });
+  });
+
+  describe('#setY', () => {
+    it('sets the y value of the vector', () => {
+      const y = 1;
+      const vector = new Vector2();
+
+      vector.setY(y);
+
+      expect(vector.y).toEqual(y);
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+
+      const result = vector.setY(1);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('#copy', () => {
     it('copies the x and y values from another vector', () => {
       const vector = new Vector2();
