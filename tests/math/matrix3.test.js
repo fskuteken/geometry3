@@ -25,6 +25,48 @@ describe('Matrix3', () => {
     });
   });
 
+  describe('#set', () => {
+    it('sets the values of the matrix', () => {
+      const matrix = new Matrix3();
+
+      matrix.set(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+      expect(matrix.values).toEqual([
+        1, 4, 7,
+        2, 5, 8,
+        3, 6, 9,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix3();
+
+      const result = matrix.set(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#copy', () => {
+    it('copies the values of another matrix', () => {
+      const matrix = new Matrix3();
+      const matrixToCopy = Matrix3.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+      matrix.copy(matrixToCopy);
+
+      expect(matrix.values).toEqual(matrixToCopy.values);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix3();
+      const matrixToCopy = new Matrix3();
+
+      const result = matrix.copy(matrixToCopy);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 3x3 identity matrix', () => {
