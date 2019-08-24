@@ -210,6 +210,84 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#makeRotationX', () => {
+    it('sets the matrix to a rotation matrix around the x axis', () => {
+      const matrix = new Matrix4();
+      const theta = Math.PI;
+      const sin = Math.sin(theta);
+      const cos = Math.cos(theta);
+
+      matrix.makeRotationX(theta);
+
+      expect(matrix.values).toEqual([
+        1, 0, 0, 0,
+        0, cos, sin, 0,
+        0, -sin, cos, 0,
+        0, 0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.makeRotationX(0);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#makeRotationY', () => {
+    it('sets the matrix to a rotation matrix around the y axis', () => {
+      const matrix = new Matrix4();
+      const theta = Math.PI;
+      const sin = Math.sin(theta);
+      const cos = Math.cos(theta);
+
+      matrix.makeRotationY(theta);
+
+      expect(matrix.values).toEqual([
+        cos, 0, -sin, 0,
+        0, 1, 0, 0,
+        sin, 0, cos, 0,
+        0, 0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.makeRotationY(0);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
+  describe('#makeRotationZ', () => {
+    it('sets the matrix to a rotation matrix around the z axis', () => {
+      const matrix = new Matrix4();
+      const theta = Math.PI;
+      const sin = Math.sin(theta);
+      const cos = Math.cos(theta);
+
+      matrix.makeRotationZ(theta);
+
+      expect(matrix.values).toEqual([
+        cos, sin, 0, 0,
+        -sin, cos, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.makeRotationZ(0);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 4x4 identity matrix', () => {

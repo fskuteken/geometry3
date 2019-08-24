@@ -290,6 +290,57 @@ export default class Matrix4 {
 
     return this;
   }
+
+  /**
+   * Sets the matrix to a rotation matrix around the x axis.
+   * @param {Number} theta The angle of the rotation in radians.
+   * @returns {Matrix4} The matrix.
+   */
+  makeRotationX(theta) {
+    const cos = Math.cos(theta);
+    const sin = Math.sin(theta);
+
+    return this.set(
+      1, 0, 0, 0,
+      0, cos, -sin, 0,
+      0, sin, cos, 0,
+      0, 0, 0, 1,
+    );
+  }
+
+  /**
+   * Sets the matrix to a rotation matrix around the y axis.
+   * @param {Number} theta The angle of the rotation in radians.
+   * @returns {Matrix4} The matrix.
+   */
+  makeRotationY(theta) {
+    const cos = Math.cos(theta);
+    const sin = Math.sin(theta);
+
+    return this.set(
+      cos, 0, sin, 0,
+      0, 1, 0, 0,
+      -sin, 0, cos, 0,
+      0, 0, 0, 1,
+    );
+  }
+
+  /**
+   * Sets the matrix to a rotation matrix around the z axis.
+   * @param {Number} theta The angle of the rotation in radians.
+   * @returns {Matrix4} The matrix.
+   */
+  makeRotationZ(theta) {
+    const cos = Math.cos(theta);
+    const sin = Math.sin(theta);
+
+    return this.set(
+      cos, -sin, 0, 0,
+      sin, cos, 0, 0,
+      0, 0, 1, 0,
+      0, 0, 0, 1,
+    );
+  }
 }
 
 /**
