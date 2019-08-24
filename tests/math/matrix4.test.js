@@ -5,7 +5,7 @@ describe('Matrix4', () => {
     it('initializes a new Matrix4 with identity values', () => {
       const matrix = new Matrix4();
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         1, 0, 0, 0,
         0, 1, 0, 0,
         0, 0, 1, 0,
@@ -18,7 +18,7 @@ describe('Matrix4', () => {
     it('initializes a new Matrix4 from the values', () => {
       const matrix = Matrix4.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         1, 5, 9, 13,
         2, 6, 10, 14,
         3, 7, 11, 15,
@@ -57,12 +57,12 @@ describe('Matrix4', () => {
   });
 
   describe('#set', () => {
-    it('sets the values of the matrix', () => {
+    it('sets the values of the elements of the matrix', () => {
       const matrix = new Matrix4();
 
       matrix.set(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         1, 5, 9, 13,
         2, 6, 10, 14,
         3, 7, 11, 15,
@@ -80,13 +80,13 @@ describe('Matrix4', () => {
   });
 
   describe('#copy', () => {
-    it('copies the values of another matrix', () => {
+    it('copies the elements of another matrix', () => {
       const matrix = new Matrix4();
       const matrixToCopy = Matrix4.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
 
       matrix.copy(matrixToCopy);
 
-      expect(matrix.values).toEqual(matrixToCopy.values);
+      expect(matrix.elements).toEqual(matrixToCopy.elements);
     });
 
     it('returns the matrix', () => {
@@ -105,7 +105,7 @@ describe('Matrix4', () => {
 
       matrix.setIdentity();
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         1, 0, 0, 0,
         0, 1, 0, 0,
         0, 0, 1, 0,
@@ -128,7 +128,7 @@ describe('Matrix4', () => {
 
       const result = matrix.clone();
 
-      expect(result.values).toEqual(matrix.values);
+      expect(result.elements).toEqual(matrix.elements);
       expect(result).not.toBe(matrix);
     });
   });
@@ -140,7 +140,7 @@ describe('Matrix4', () => {
 
       matrix.multiply(other);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         2, 10, 18, 13,
         4, 12, 20, 14,
         6, 14, 22, 15,
@@ -165,7 +165,7 @@ describe('Matrix4', () => {
 
       matrix.premultiply(other);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         2, 10, 18, 13,
         4, 12, 20, 14,
         6, 14, 22, 15,
@@ -191,7 +191,7 @@ describe('Matrix4', () => {
 
       matrix.multiplyMatrices(a, b);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         2, 10, 18, 13,
         4, 12, 20, 14,
         6, 14, 22, 15,
@@ -219,7 +219,7 @@ describe('Matrix4', () => {
 
       matrix.makeRotationX(theta);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         1, 0, 0, 0,
         0, cos, sin, 0,
         0, -sin, cos, 0,
@@ -245,7 +245,7 @@ describe('Matrix4', () => {
 
       matrix.makeRotationY(theta);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         cos, 0, -sin, 0,
         0, 1, 0, 0,
         sin, 0, cos, 0,
@@ -271,7 +271,7 @@ describe('Matrix4', () => {
 
       matrix.makeRotationZ(theta);
 
-      expect(matrix.values).toEqual([
+      expect(matrix.elements).toEqual([
         cos, sin, 0, 0,
         -sin, cos, 0, 0,
         0, 0, 1, 0,
@@ -291,7 +291,7 @@ describe('Matrix4', () => {
   describe('constants', () => {
     describe('identity', () => {
       it('is a 4x4 identity matrix', () => {
-        expect(Matrix4.identity.values).toEqual([
+        expect(Matrix4.identity.elements).toEqual([
           1, 0, 0, 0,
           0, 1, 0, 0,
           0, 0, 1, 0,
@@ -301,8 +301,8 @@ describe('Matrix4', () => {
     });
 
     describe('zero', () => {
-      it('has all values equal to zero', () => {
-        expect(Matrix4.zero.values).toEqual([
+      it('has all elements equal to zero', () => {
+        expect(Matrix4.zero.elements).toEqual([
           0, 0, 0, 0,
           0, 0, 0, 0,
           0, 0, 0, 0,

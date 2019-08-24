@@ -362,12 +362,12 @@ export default class Vector4 {
    */
   transform(matrix4) {
     const { x, y, z, w } = this;
-    const v = matrix4.values;
+    const m = matrix4.elements;
 
-    this.x = x * v[0] + y * v[4] + z * v[8] + w * v[12];
-    this.y = x * v[1] + y * v[5] + z * v[9] + w * v[13];
-    this.z = x * v[2] + y * v[6] + z * v[10] + w * v[14];
-    this.w = x * v[3] + y * v[7] + z * v[11] + w * v[15];
+    this.x = x * m[0] + y * m[4] + z * m[8] + w * m[12];
+    this.y = x * m[1] + y * m[5] + z * m[9] + w * m[13];
+    this.z = x * m[2] + y * m[6] + z * m[10] + w * m[14];
+    this.w = x * m[3] + y * m[7] + z * m[11] + w * m[15];
 
     return this;
   }
@@ -380,12 +380,12 @@ export default class Vector4 {
    */
   transformVector(vector, matrix4) {
     const { x, y, z, w } = vector;
-    const v = matrix4.values;
+    const m = matrix4.elements;
 
-    this.x = x * v[0] + y * v[4] + z * v[8] + w * v[12];
-    this.y = x * v[1] + y * v[5] + z * v[9] + w * v[13];
-    this.z = x * v[2] + y * v[6] + z * v[10] + w * v[14];
-    this.w = x * v[3] + y * v[7] + z * v[11] + w * v[15];
+    this.x = x * m[0] + y * m[4] + z * m[8] + w * m[12];
+    this.y = x * m[1] + y * m[5] + z * m[9] + w * m[13];
+    this.z = x * m[2] + y * m[6] + z * m[10] + w * m[14];
+    this.w = x * m[3] + y * m[7] + z * m[11] + w * m[15];
 
     return this;
   }

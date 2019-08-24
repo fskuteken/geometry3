@@ -1,13 +1,13 @@
 /**
  * A 4x4 matrix.
- * Its values are stored in column-major order.
+ * Its elements are stored in column-major order.
  */
 export default class Matrix4 {
   /**
    * Creates a new identity Matrix4.
    */
   constructor() {
-    this.values = [
+    this.elements = [
       1, 0, 0, 0,
       0, 1, 0, 0,
       0, 0, 1, 0,
@@ -42,12 +42,12 @@ export default class Matrix4 {
     a30, a31, a32, a33,
   ) {
     const matrix = new Matrix4();
-    const v = matrix.values;
+    const t = matrix.elements;
 
-    v[0] = a00; v[4] = a01; v[8] = a02; v[12] = a03;
-    v[1] = a10; v[5] = a11; v[9] = a12; v[13] = a13;
-    v[2] = a20; v[6] = a21; v[10] = a22; v[14] = a23;
-    v[3] = a30; v[7] = a31; v[11] = a32; v[15] = a33;
+    t[0] = a00; t[4] = a01; t[8] = a02; t[12] = a03;
+    t[1] = a10; t[5] = a11; t[9] = a12; t[13] = a13;
+    t[2] = a20; t[6] = a21; t[10] = a22; t[14] = a23;
+    t[3] = a30; t[7] = a31; t[11] = a32; t[15] = a33;
 
     return matrix;
   }
@@ -58,8 +58,8 @@ export default class Matrix4 {
    * @returns {Boolean} A value indicating whether all the elements are equal.
    */
   equals(matrix) {
-    const m = matrix.values;
-    const t = this.values;
+    const m = matrix.elements;
+    const t = this.elements;
 
     return (
       m[0] === t[0]
@@ -107,12 +107,12 @@ export default class Matrix4 {
     a20, a21, a22, a23,
     a30, a31, a32, a33,
   ) {
-    const v = this.values;
+    const t = this.elements;
 
-    v[0] = a00; v[4] = a01; v[8] = a02; v[12] = a03;
-    v[1] = a10; v[5] = a11; v[9] = a12; v[13] = a13;
-    v[2] = a20; v[6] = a21; v[10] = a22; v[14] = a23;
-    v[3] = a30; v[7] = a31; v[11] = a32; v[15] = a33;
+    t[0] = a00; t[4] = a01; t[8] = a02; t[12] = a03;
+    t[1] = a10; t[5] = a11; t[9] = a12; t[13] = a13;
+    t[2] = a20; t[6] = a21; t[10] = a22; t[14] = a23;
+    t[3] = a30; t[7] = a31; t[11] = a32; t[15] = a33;
 
     return this;
   }
@@ -136,14 +136,14 @@ export default class Matrix4 {
    * @returns {Matrix4} The matrix.
    */
   copy(matrix) {
-    const v = this.values;
+    const t = this.elements;
 
     [
-      v[0], v[1], v[2], v[3],
-      v[4], v[5], v[6], v[7],
-      v[8], v[9], v[10], v[11],
-      v[12], v[13], v[14], v[15],
-    ] = matrix.values;
+      t[0], t[1], t[2], t[3],
+      t[4], t[5], t[6], t[7],
+      t[8], t[9], t[10], t[11],
+      t[12], t[13], t[14], t[15],
+    ] = matrix.elements;
 
     return this;
   }
@@ -153,13 +153,13 @@ export default class Matrix4 {
    * @returns {Matrix4} The cloned matrix.
    */
   clone() {
-    const v = this.values;
+    const t = this.elements;
 
     return Matrix4.fromValues(
-      v[0], v[4], v[8], v[12],
-      v[1], v[5], v[9], v[13],
-      v[2], v[6], v[10], v[14],
-      v[3], v[7], v[11], v[15],
+      t[0], t[4], t[8], t[12],
+      t[1], t[5], t[9], t[13],
+      t[2], t[6], t[10], t[14],
+      t[3], t[7], t[11], t[15],
     );
   }
 
@@ -169,8 +169,8 @@ export default class Matrix4 {
    * @returns {Matrix4} The matrix.
    */
   multiply(matrix) {
-    const m = matrix.values;
-    const t = this.values;
+    const m = matrix.elements;
+    const t = this.elements;
 
     const a00 = t[0], a01 = t[4], a02 = t[8], a03 = t[12];
     const a10 = t[1], a11 = t[5], a12 = t[9], a13 = t[13];
@@ -211,8 +211,8 @@ export default class Matrix4 {
    * @returns {Matrix4} The matrix.
    */
   premultiply(matrix) {
-    const m = matrix.values;
-    const t = this.values;
+    const m = matrix.elements;
+    const t = this.elements;
 
     const a00 = m[0], a01 = m[4], a02 = m[8], a03 = m[12];
     const a10 = m[1], a11 = m[5], a12 = m[9], a13 = m[13];
@@ -254,39 +254,39 @@ export default class Matrix4 {
    * @returns {Matrix4} The matrix.
    */
   multiplyMatrices(a, b) {
-    const av = a.values;
-    const bv = b.values;
-    const v = this.values;
+    const ae = a.elements;
+    const be = b.elements;
+    const t = this.elements;
 
-    const a00 = av[0], a01 = av[4], a02 = av[8], a03 = av[12];
-    const a10 = av[1], a11 = av[5], a12 = av[9], a13 = av[13];
-    const a20 = av[2], a21 = av[6], a22 = av[10], a23 = av[14];
-    const a30 = av[3], a31 = av[7], a32 = av[11], a33 = av[15];
+    const a00 = ae[0], a01 = ae[4], a02 = ae[8], a03 = ae[12];
+    const a10 = ae[1], a11 = ae[5], a12 = ae[9], a13 = ae[13];
+    const a20 = ae[2], a21 = ae[6], a22 = ae[10], a23 = ae[14];
+    const a30 = ae[3], a31 = ae[7], a32 = ae[11], a33 = ae[15];
 
-    const b00 = bv[0], b01 = bv[4], b02 = bv[8], b03 = bv[12];
-    const b10 = bv[1], b11 = bv[5], b12 = bv[9], b13 = bv[13];
-    const b20 = bv[2], b21 = bv[6], b22 = bv[10], b23 = bv[14];
-    const b30 = bv[3], b31 = bv[7], b32 = bv[11], b33 = bv[15];
+    const b00 = be[0], b01 = be[4], b02 = be[8], b03 = be[12];
+    const b10 = be[1], b11 = be[5], b12 = be[9], b13 = be[13];
+    const b20 = be[2], b21 = be[6], b22 = be[10], b23 = be[14];
+    const b30 = be[3], b31 = be[7], b32 = be[11], b33 = be[15];
 
-    v[0] = a00 * b00 + a01 * b10 + a02 * b20 + a03 * b30;
-    v[4] = a00 * b01 + a01 * b11 + a02 * b21 + a03 * b31;
-    v[8] = a00 * b02 + a01 * b12 + a02 * b22 + a03 * b32;
-    v[12] = a00 * b03 + a01 * b13 + a02 * b23 + a03 * b33;
+    t[0] = a00 * b00 + a01 * b10 + a02 * b20 + a03 * b30;
+    t[4] = a00 * b01 + a01 * b11 + a02 * b21 + a03 * b31;
+    t[8] = a00 * b02 + a01 * b12 + a02 * b22 + a03 * b32;
+    t[12] = a00 * b03 + a01 * b13 + a02 * b23 + a03 * b33;
 
-    v[1] = a10 * b00 + a11 * b10 + a12 * b20 + a13 * b30;
-    v[5] = a10 * b01 + a11 * b11 + a12 * b21 + a13 * b31;
-    v[9] = a10 * b02 + a11 * b12 + a12 * b22 + a13 * b32;
-    v[13] = a10 * b03 + a11 * b13 + a12 * b23 + a13 * b33;
+    t[1] = a10 * b00 + a11 * b10 + a12 * b20 + a13 * b30;
+    t[5] = a10 * b01 + a11 * b11 + a12 * b21 + a13 * b31;
+    t[9] = a10 * b02 + a11 * b12 + a12 * b22 + a13 * b32;
+    t[13] = a10 * b03 + a11 * b13 + a12 * b23 + a13 * b33;
 
-    v[2] = a20 * b00 + a21 * b10 + a22 * b20 + a23 * b30;
-    v[6] = a20 * b01 + a21 * b11 + a22 * b21 + a23 * b31;
-    v[10] = a20 * b02 + a21 * b12 + a22 * b22 + a23 * b32;
-    v[14] = a20 * b03 + a21 * b13 + a22 * b23 + a23 * b33;
+    t[2] = a20 * b00 + a21 * b10 + a22 * b20 + a23 * b30;
+    t[6] = a20 * b01 + a21 * b11 + a22 * b21 + a23 * b31;
+    t[10] = a20 * b02 + a21 * b12 + a22 * b22 + a23 * b32;
+    t[14] = a20 * b03 + a21 * b13 + a22 * b23 + a23 * b33;
 
-    v[3] = a30 * b00 + a31 * b10 + a32 * b20 + a33 * b30;
-    v[7] = a30 * b01 + a31 * b11 + a32 * b21 + a33 * b31;
-    v[11] = a30 * b02 + a31 * b12 + a32 * b22 + a33 * b32;
-    v[15] = a30 * b03 + a31 * b13 + a32 * b23 + a33 * b33;
+    t[3] = a30 * b00 + a31 * b10 + a32 * b20 + a33 * b30;
+    t[7] = a30 * b01 + a31 * b11 + a32 * b21 + a33 * b31;
+    t[11] = a30 * b02 + a31 * b12 + a32 * b22 + a33 * b32;
+    t[15] = a30 * b03 + a31 * b13 + a32 * b23 + a33 * b33;
 
     return this;
   }

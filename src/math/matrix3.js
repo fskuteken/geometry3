@@ -1,13 +1,13 @@
 /**
  * A 3x3 matrix.
- * Its values are stored in column-major order.
+ * Its elements are stored in column-major order.
  */
 export default class Matrix3 {
   /**
    * Creates a new identity Matrix3.
    */
   constructor() {
-    this.values = [
+    this.elements = [
       1, 0, 0,
       0, 1, 0,
       0, 0, 1,
@@ -33,11 +33,11 @@ export default class Matrix3 {
     a20, a21, a22,
   ) {
     const matrix = new Matrix3();
-    const v = matrix.values;
+    const t = matrix.elements;
 
-    v[0] = a00; v[3] = a01; v[6] = a02;
-    v[1] = a10; v[4] = a11; v[7] = a12;
-    v[2] = a20; v[5] = a21; v[8] = a22;
+    t[0] = a00; t[3] = a01; t[6] = a02;
+    t[1] = a10; t[4] = a11; t[7] = a12;
+    t[2] = a20; t[5] = a21; t[8] = a22;
 
     return matrix;
   }
@@ -48,8 +48,8 @@ export default class Matrix3 {
    * @returns {Boolean} A value indicating whether all the elements are equal.
    */
   equals(matrix) {
-    const m = matrix.values;
-    const t = this.values;
+    const m = matrix.elements;
+    const t = this.elements;
 
     return (
       m[0] === t[0]
@@ -82,11 +82,11 @@ export default class Matrix3 {
     a10, a11, a12,
     a20, a21, a22,
   ) {
-    const v = this.values;
+    const t = this.elements;
 
-    v[0] = a00; v[3] = a01; v[6] = a02;
-    v[1] = a10; v[4] = a11; v[7] = a12;
-    v[2] = a20; v[5] = a21; v[8] = a22;
+    t[0] = a00; t[3] = a01; t[6] = a02;
+    t[1] = a10; t[4] = a11; t[7] = a12;
+    t[2] = a20; t[5] = a21; t[8] = a22;
 
     return this;
   }
@@ -109,13 +109,13 @@ export default class Matrix3 {
    * @returns {Matrix3} The matrix.
    */
   copy(matrix) {
-    const v = this.values;
+    const t = this.elements;
 
     [
-      v[0], v[1], v[2],
-      v[3], v[4], v[5],
-      v[6], v[7], v[8],
-    ] = matrix.values;
+      t[0], t[1], t[2],
+      t[3], t[4], t[5],
+      t[6], t[7], t[8],
+    ] = matrix.elements;
 
     return this;
   }
@@ -125,12 +125,12 @@ export default class Matrix3 {
    * @returns {Matrix3} The cloned matrix.
    */
   clone() {
-    const v = this.values;
+    const t = this.elements;
 
     return Matrix3.fromValues(
-      v[0], v[3], v[6],
-      v[1], v[4], v[7],
-      v[2], v[5], v[8],
+      t[0], t[3], t[6],
+      t[1], t[4], t[7],
+      t[2], t[5], t[8],
     );
   }
 }

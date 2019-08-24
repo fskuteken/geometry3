@@ -343,11 +343,11 @@ export default class Vector3 {
    */
   transform(matrix3) {
     const { x, y, z } = this;
-    const v = matrix3.values;
+    const m = matrix3.elements;
 
-    this.x = x * v[0] + y * v[3] + z * v[6];
-    this.y = x * v[1] + y * v[4] + z * v[7];
-    this.z = x * v[2] + y * v[5] + z * v[8];
+    this.x = x * m[0] + y * m[3] + z * m[6];
+    this.y = x * m[1] + y * m[4] + z * m[7];
+    this.z = x * m[2] + y * m[5] + z * m[8];
 
     return this;
   }
@@ -360,11 +360,11 @@ export default class Vector3 {
    */
   transformVector(vector, matrix3) {
     const { x, y, z } = vector;
-    const v = matrix3.values;
+    const m = matrix3.elements;
 
-    this.x = x * v[0] + y * v[3] + z * v[6];
-    this.y = x * v[1] + y * v[4] + z * v[7];
-    this.z = x * v[2] + y * v[5] + z * v[8];
+    this.x = x * m[0] + y * m[3] + z * m[6];
+    this.y = x * m[1] + y * m[4] + z * m[7];
+    this.z = x * m[2] + y * m[5] + z * m[8];
 
     return this;
   }
@@ -377,11 +377,11 @@ export default class Vector3 {
    */
   transformPosition(matrix4) {
     const { x, y, z } = this;
-    const v = matrix4.values;
+    const m = matrix4.elements;
 
-    this.x = x * v[0] + y * v[4] + z * v[8] + v[12];
-    this.y = x * v[1] + y * v[5] + z * v[9] + v[13];
-    this.z = x * v[2] + y * v[6] + z * v[10] + v[14];
+    this.x = x * m[0] + y * m[4] + z * m[8] + m[12];
+    this.y = x * m[1] + y * m[5] + z * m[9] + m[13];
+    this.z = x * m[2] + y * m[6] + z * m[10] + m[14];
 
     return this;
   }
@@ -395,11 +395,11 @@ export default class Vector3 {
    */
   transformPositionVector(vector, matrix4) {
     const { x, y, z } = vector;
-    const v = matrix4.values;
+    const m = matrix4.elements;
 
-    this.x = x * v[0] + y * v[4] + z * v[8] + v[12];
-    this.y = x * v[1] + y * v[5] + z * v[9] + v[13];
-    this.z = x * v[2] + y * v[6] + z * v[10] + v[14];
+    this.x = x * m[0] + y * m[4] + z * m[8] + m[12];
+    this.y = x * m[1] + y * m[5] + z * m[9] + m[13];
+    this.z = x * m[2] + y * m[6] + z * m[10] + m[14];
 
     return this;
   }
@@ -412,11 +412,11 @@ export default class Vector3 {
    */
   transformDirection(matrix4) {
     const { x, y, z } = this;
-    const v = matrix4.values;
+    const m = matrix4.elements;
 
-    this.x = x * v[0] + y * v[4] + z * v[8];
-    this.y = x * v[1] + y * v[5] + z * v[9];
-    this.z = x * v[2] + y * v[6] + z * v[10];
+    this.x = x * m[0] + y * m[4] + z * m[8];
+    this.y = x * m[1] + y * m[5] + z * m[9];
+    this.z = x * m[2] + y * m[6] + z * m[10];
 
     return this;
   }
@@ -430,11 +430,11 @@ export default class Vector3 {
    */
   transformDirectionVector(vector, matrix4) {
     const { x, y, z } = vector;
-    const v = matrix4.values;
+    const m = matrix4.elements;
 
-    this.x = x * v[0] + y * v[4] + z * v[8];
-    this.y = x * v[1] + y * v[5] + z * v[9];
-    this.z = x * v[2] + y * v[6] + z * v[10];
+    this.x = x * m[0] + y * m[4] + z * m[8];
+    this.y = x * m[1] + y * m[5] + z * m[9];
+    this.z = x * m[2] + y * m[6] + z * m[10];
 
     return this;
   }
