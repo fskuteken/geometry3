@@ -401,7 +401,7 @@ describe('Vector2', () => {
   });
 
   describe('#distanceTo', () => {
-    test('returns the distance to another vector', () => {
+    it('returns the distance to another vector', () => {
       const vector = new Vector2(1, 2);
       const other = new Vector2(3, 4);
 
@@ -412,7 +412,7 @@ describe('Vector2', () => {
   });
 
   describe('#distanceToSquared', () => {
-    test('returns the squared distance to another vector', () => {
+    it('returns the squared distance to another vector', () => {
       const vector = new Vector2(1, 2);
       const other = new Vector2(3, 4);
 
