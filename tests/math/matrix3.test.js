@@ -67,6 +67,17 @@ describe('Matrix3', () => {
     });
   });
 
+  describe('#clone', () => {
+    it('creates a clone of the matrix', () => {
+      const matrix = Matrix3.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+      const result = matrix.clone();
+
+      expect(result.values).toEqual(matrix.values);
+      expect(result).not.toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 3x3 identity matrix', () => {

@@ -105,6 +105,21 @@ export default class Matrix4 {
 
     return this;
   }
+
+  /**
+   * Creates a clone of the matrix.
+   * @returns {Matrix4} The cloned matrix.
+   */
+  clone() {
+    const v = this.values;
+
+    return Matrix4.fromValues(
+      v[0], v[4], v[8], v[12],
+      v[1], v[5], v[9], v[13],
+      v[2], v[6], v[10], v[14],
+      v[3], v[7], v[11], v[15],
+    );
+  }
 }
 
 /**

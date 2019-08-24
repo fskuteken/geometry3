@@ -85,6 +85,20 @@ export default class Matrix3 {
 
     return this;
   }
+
+  /**
+   * Creates a clone of the matrix.
+   * @returns {Matrix3} The cloned matrix.
+   */
+  clone() {
+    const v = this.values;
+
+    return Matrix3.fromValues(
+      v[0], v[3], v[6],
+      v[1], v[4], v[7],
+      v[2], v[5], v[8],
+    );
+  }
 }
 
 /**

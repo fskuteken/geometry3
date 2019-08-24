@@ -70,6 +70,17 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#clone', () => {
+    it('creates a clone of the matrix', () => {
+      const matrix = Matrix4.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+
+      const result = matrix.clone();
+
+      expect(result.values).toEqual(matrix.values);
+      expect(result).not.toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 4x4 identity matrix', () => {
