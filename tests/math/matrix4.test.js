@@ -133,6 +133,33 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#multiplyMatrices', () => {
+    it('sets the matrix to the multiplication of two matrices', () => {
+      const matrix = new Matrix4();
+      const a = Matrix4.fromValues(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
+      const b = Matrix4.fromValues(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+
+      matrix.multiplyMatrices(a, b);
+
+      expect(matrix.values).toEqual([
+        2, 10, 18, 13,
+        4, 12, 20, 14,
+        6, 14, 22, 15,
+        8, 16, 24, 16,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+      const a = new Matrix4();
+      const b = new Matrix4();
+
+      const result = matrix.multiplyMatrices(a, b);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 4x4 identity matrix', () => {

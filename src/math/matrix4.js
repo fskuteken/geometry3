@@ -162,6 +162,50 @@ export default class Matrix4 {
       v[3], v[7], v[11], v[15],
     );
   }
+
+  /**
+   * Sets the matrix to the multiplication of two matrices.
+   * @param {Matrix4} a The first matrix.
+   * @param {Matrix4} b The second matrix.
+   * @returns {Matrix4} The matrix.
+   */
+  multiplyMatrices(a, b) {
+    const av = a.values;
+    const bv = b.values;
+    const v = this.values;
+
+    const a00 = av[0], a01 = av[4], a02 = av[8], a03 = av[12];
+    const a10 = av[1], a11 = av[5], a12 = av[9], a13 = av[13];
+    const a20 = av[2], a21 = av[6], a22 = av[10], a23 = av[14];
+    const a30 = av[3], a31 = av[7], a32 = av[11], a33 = av[15];
+
+    const b00 = bv[0], b01 = bv[4], b02 = bv[8], b03 = bv[12];
+    const b10 = bv[1], b11 = bv[5], b12 = bv[9], b13 = bv[13];
+    const b20 = bv[2], b21 = bv[6], b22 = bv[10], b23 = bv[14];
+    const b30 = bv[3], b31 = bv[7], b32 = bv[11], b33 = bv[15];
+
+    v[0] = a00 * b00 + a01 * b10 + a02 * b20 + a03 * b30;
+    v[4] = a00 * b01 + a01 * b11 + a02 * b21 + a03 * b31;
+    v[8] = a00 * b02 + a01 * b12 + a02 * b22 + a03 * b32;
+    v[12] = a00 * b03 + a01 * b13 + a02 * b23 + a03 * b33;
+
+    v[1] = a10 * b00 + a11 * b10 + a12 * b20 + a13 * b30;
+    v[5] = a10 * b01 + a11 * b11 + a12 * b21 + a13 * b31;
+    v[9] = a10 * b02 + a11 * b12 + a12 * b22 + a13 * b32;
+    v[13] = a10 * b03 + a11 * b13 + a12 * b23 + a13 * b33;
+
+    v[2] = a20 * b00 + a21 * b10 + a22 * b20 + a23 * b30;
+    v[6] = a20 * b01 + a21 * b11 + a22 * b21 + a23 * b31;
+    v[10] = a20 * b02 + a21 * b12 + a22 * b22 + a23 * b32;
+    v[14] = a20 * b03 + a21 * b13 + a22 * b23 + a23 * b33;
+
+    v[3] = a30 * b00 + a31 * b10 + a32 * b20 + a33 * b30;
+    v[7] = a30 * b01 + a31 * b11 + a32 * b21 + a33 * b31;
+    v[11] = a30 * b02 + a31 * b12 + a32 * b22 + a33 * b32;
+    v[15] = a30 * b03 + a31 * b13 + a32 * b23 + a33 * b33;
+
+    return this;
+  }
 }
 
 /**
