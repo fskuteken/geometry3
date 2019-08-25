@@ -96,3 +96,36 @@ Vector3.unitZ
 
 // Vector3 { x: 0, y: 0, z: 1 }
 ```
+
+---
+
+## Methods
+
+### `set`
+
+Sets the values of each component of the vector.
+It returns a reference to the vector.
+
+#### Signature
+
+set(x: Number, y: Number, z: Number): Vector3
+
+#### Arguments
+
+* `x`: Number - The value to set the first component of the vector.
+* `y`: Number - The value to set the second component of the vector.
+* `z`: Number - The value to set the third component of the vector.
+
+#### Returns
+
+* A reference to the vector.
+
+#### Examples
+
+```javascript
+const vector = new Vector3();
+
+vector.set(1, 2, 3)
+
+// Vector3 { x: 1, y: 2, z: 3 }
+```
