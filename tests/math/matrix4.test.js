@@ -134,6 +134,21 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#determinant', () => {
+    it('calculates the determinant of the matrix', () => {
+      const matrix = Matrix4.fromValues(
+        1, 0, 0, 0,
+        0, 2, 0, 0,
+        0, 0, 3, 0,
+        0, 0, 0, 4,
+      );
+
+      const result = matrix.determinant();
+
+      expect(result).toEqual(24);
+    });
+  });
+
   describe('#multiply', () => {
     it('sets the matrix to the multiplication of itself and another matrix', () => {
       const matrix = Matrix4.fromValues(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
