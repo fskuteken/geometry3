@@ -1,6 +1,7 @@
 {
   "name": "geometry3",
   "description": "3D geometry library for JavaScript",
+  "main": "build/lib",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fskuteken/geometry3.git"
@@ -16,12 +17,14 @@
   },
   "homepage": "https://github.com/fskuteken/geometry3#readme",
   "scripts": {
+    "build": "babel src --out-dir build/lib",
     "eslint": "eslint .",
     "lint": "npm run eslint && npm run markdownlint",
     "markdownlint": "markdownlint . --ignore node_modules",
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-jest": "^24.9.0",
