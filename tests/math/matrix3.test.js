@@ -125,6 +125,32 @@ describe('Matrix3', () => {
     });
   });
 
+  describe('#transpose', () => {
+    it('transposes the matrix', () => {
+      const matrix = Matrix3.fromValues(
+        1, 2, 3,
+        4, 5, 6,
+        7, 8, 9,
+      );
+
+      matrix.transpose();
+
+      expect(matrix.elements).toEqual([
+        1, 2, 3,
+        4, 5, 6,
+        7, 8, 9,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix3();
+
+      const result = matrix.transpose();
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 3x3 identity matrix', () => {

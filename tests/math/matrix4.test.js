@@ -149,6 +149,34 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#transpose', () => {
+    it('transposes the matrix', () => {
+      const matrix = Matrix4.fromValues(
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 10, 11, 12,
+        13, 14, 15, 16,
+      );
+
+      matrix.transpose();
+
+      expect(matrix.elements).toEqual([
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 10, 11, 12,
+        13, 14, 15, 16,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.transpose();
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('#multiply', () => {
     it('sets the matrix to the multiplication of itself and another matrix', () => {
       const matrix = Matrix4.fromValues(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);

@@ -133,6 +133,14 @@ export default class Matrix3 {
       t[2], t[5], t[8],
     );
   }
+
+  /**
+   * Transposes the matrix.
+   * @returns {Matrix3} The matrix.
+   */
+  transpose() {
+    return this.set(...this.elements);
+  }
 }
 
 /**

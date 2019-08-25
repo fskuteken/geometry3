@@ -192,6 +192,14 @@ export default class Matrix4 {
   }
 
   /**
+   * Transposes the matrix.
+   * @returns {Matrix4} The matrix.
+   */
+  transpose() {
+    return this.set(...this.elements);
+  }
+
+  /**
    * Post-multiplies another matrix, and sets this matrix to the result.
    * @param {Matrix4} a The matrix to post-multiply with.
    * @returns {Matrix4} The matrix.
