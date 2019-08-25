@@ -410,6 +410,29 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#makePerspective', () => {
+    it('sets the matrix to a perspective projection matrix', () => {
+      const matrix = new Matrix4();
+
+      matrix.makePerspective(-2, 2, 4, -4, -8, 8);
+
+      expect(matrix.elements).toEqual([
+        -4, 0, 0, 0,
+        0, -2, 0, 0,
+        0, 0, -0, -1,
+        0, 0, 8, 0,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.makePerspective(-1, 1, 1, -1, -1, 1);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 4x4 identity matrix', () => {

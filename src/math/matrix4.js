@@ -424,6 +424,37 @@ export default class Matrix4 {
       0, 0, 0, 1,
     );
   }
+
+  /**
+   * Sets the matrix to a perspective projection matrix.
+   * @param {Number} left The left clipping plane distance.
+   * @param {Number} right The right clipping plane distance.
+   * @param {Number} top The top clipping plane distance.
+   * @param {Number} bottom The bottom clipping plane distance.
+   * @param {Number} near The near clipping plane distance.
+   * @param {Number} far The far clipping plane distance.
+   * @returns {Matrix4} The matrix.
+   */
+  makePerspective(left, right, top, bottom, near, far) {
+    const width = right - left;
+    const height = top - bottom;
+    const depth = far - near;
+
+    const x = (2 * near) / width;
+    const y = (2 * near) / height;
+
+    const a = (right + left) / width;
+    const b = (top + bottom) / height;
+    const c = -(far + near) / depth;
+    const d = -(2 * far * near) / depth;
+
+    return this.set(
+      x, 0, a, 0,
+      0, y, b, 0,
+      0, 0, c, d,
+      0, 0, -1, 0,
+    );
+  }
 }
 
 /**
