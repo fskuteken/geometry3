@@ -177,6 +177,34 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#invert', () => {
+    it('inverts the matrix', () => {
+      const matrix = Matrix4.fromValues(
+        2, 0, 0, 0,
+        0, 4, 0, 0,
+        0, 0, 8, 0,
+        0, 0, 0, 1,
+      );
+
+      matrix.invert();
+
+      expect(matrix.elements).toEqual([
+        0.5, 0, 0, 0,
+        0, 0.25, 0, 0,
+        0, 0, 0.125, 0,
+        0, 0, 0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.invert();
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('#multiply', () => {
     it('sets the matrix to the multiplication of itself and another matrix', () => {
       const matrix = Matrix4.fromValues(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
