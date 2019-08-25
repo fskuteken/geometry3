@@ -433,6 +433,35 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#lookAt', () => {
+    it('sets the matrix to a view matrix that looks at a target', () => {
+      const matrix = new Matrix4();
+      const source = new Vector3(1, 1, 1);
+      const target = new Vector3(1, 1, 0);
+      const up = new Vector3(0, 1, 0);
+
+      matrix.lookAt(source, target, up);
+
+      expect(matrix.elements).toEqual([
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        -1, -1, -1, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+      const source = new Vector3(1, 1, 1);
+      const target = new Vector3(1, 1, 0);
+      const up = new Vector3(0, 1, 0);
+
+      const result = matrix.lookAt(source, target, up);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 4x4 identity matrix', () => {

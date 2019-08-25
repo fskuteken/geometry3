@@ -455,6 +455,54 @@ export default class Matrix4 {
       0, 0, -1, 0,
     );
   }
+
+  /**
+   * Sets the matrix to a view matrix that looks at a target.
+   * @param {Vector3} source The position to translate to.
+   * @param {Vector3} target The target to look at.
+   * @param {Vector3} up The up direction.
+   * @returns {Vector3} The matrix.
+   */
+  lookAt(source, target, up) {
+    let ix, iy, iz;
+    let kx, ky, kz;
+    let length;
+
+    kx = source.x - target.x;
+    ky = source.y - target.y;
+    kz = source.z - target.z;
+
+    length = Math.sqrt(kx * kx + ky * ky + kz * kz);
+
+    kx /= length;
+    ky /= length;
+    kz /= length;
+
+    ix = up.y * kz - up.z * ky;
+    iy = up.z * kx - up.x * kz;
+    iz = up.x * ky - up.y * kx;
+
+    length = Math.sqrt(ix * ix + iy * iy + iz * iz);
+
+    ix /= length;
+    iy /= length;
+    iz /= length;
+
+    const jx = ky * iz - kz * iy;
+    const jy = kz * ix - kx * iz;
+    const jz = kx * iy - ky * ix;
+
+    const tx = -ix * source.x - iy * source.y - iz * source.z;
+    const ty = -jx * source.x - jy * source.y - jz * source.z;
+    const tz = -kx * source.x - ky * source.y - kz * source.z;
+
+    return this.set(
+      ix, iy, iz, tx,
+      jx, jy, jz, ty,
+      kx, ky, kz, tz,
+      0, 0, 0, 1,
+    );
+  }
 }
 
 /**
