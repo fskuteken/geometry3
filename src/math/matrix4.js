@@ -401,6 +401,29 @@ export default class Matrix4 {
       0, 0, 0, 1,
     );
   }
+
+  /**
+   * Sets the matrix to an orthographic projection matrix.
+   * @param {Number} left The left clipping plane distance.
+   * @param {Number} right The right clipping plane distance.
+   * @param {Number} top The top clipping plane distance.
+   * @param {Number} bottom The bottom clipping plane distance.
+   * @param {Number} near The near clipping plane distance.
+   * @param {Number} far The far clipping plane distance.
+   * @returns {Matrix4} The matrix.
+   */
+  makeOrthographic(left, right, top, bottom, near, far) {
+    const width = 1 / (right - left);
+    const height = 1 / (top - bottom);
+    const depth = 1 / (far - near);
+
+    return this.set(
+      2 * width, 0, 0, -(right + left) * width,
+      0, 2 * height, 0, -(top + bottom) * height,
+      0, 0, -2 * depth, -(far + near) * depth,
+      0, 0, 0, 1,
+    );
+  }
 }
 
 /**

@@ -387,6 +387,29 @@ describe('Matrix4', () => {
     });
   });
 
+  describe('#makeOrthographic', () => {
+    it('sets the matrix to an orthographic projection matrix', () => {
+      const matrix = new Matrix4();
+
+      matrix.makeOrthographic(-2, 2, 4, -4, -8, 8);
+
+      expect(matrix.elements).toEqual([
+        0.5, 0, 0, 0,
+        0, 0.25, 0, 0,
+        0, 0, -0.125, 0,
+        -0, -0, -0, 1,
+      ]);
+    });
+
+    it('returns the matrix', () => {
+      const matrix = new Matrix4();
+
+      const result = matrix.makeOrthographic(-1, 1, 1, -1, -1, 1);
+
+      expect(result).toBe(matrix);
+    });
+  });
+
   describe('constants', () => {
     describe('identity', () => {
       it('is a 4x4 identity matrix', () => {
