@@ -1,6 +1,6 @@
 {
   "name": "geometry3",
-  "description": "3D geometry library for Node.js",
+  "description": "3D geometry library for JavaScript",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fskuteken/geometry3.git"
