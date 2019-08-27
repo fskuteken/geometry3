@@ -1,2 +1,4 @@
 /node_modules
 /build
+/docs/_site
+/docs/.jekyll-cache

@@ -1,0 +1,43 @@
+vector3:
+  description: A vector with 3 components.
+  properties:
+    - name: x
+      type: Number
+      description: The first component of the vector.
+    - name: y
+      type: Number
+      description: The second component of the vector.
+    - name: z
+      type: Number
+      description: The third component of the vector.
+  class_properties:
+    - name: zero
+      type: Vector3
+      description: A Vector3 with all components equal to 0.
+      example: |-
+        Vector3.zero
+        // Vector3 { x: 0, y: 0, z: 0 }
+    - name: one
+      type: Vector3
+      description: A Vector3 with all components equal to 1.
+      example: |-
+        Vector3.one
+        // Vector3 { x: 1, y: 1, z: 1 }
+    - name: unitX
+      type: Vector3
+      description: A Vector3 with unit length along the x axis.
+      example: |-
+        Vector3.unitX
+        // Vector3 { x: 1, y: 0, z: 0 }
+    - name: unitY
+      type: Vector3
+      description: A Vector3 with unit length along the y axis.
+      example: |-
+        Vector3.unitY
+        // Vector3 { x: 0, y: 1, z: 0 }
+    - name: unitZ
+      type: Vector3
+      description: A Vector3 with unit length along the z axis.
+      example: |-
+        Vector3.unitZ
+        // Vector3 { x: 0, y: 0, z: 1 }
