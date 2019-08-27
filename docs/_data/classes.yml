@@ -41,3 +41,52 @@ vector3:
       example: |-
         Vector3.unitZ
         // Vector3 { x: 0, y: 0, z: 1 }
+  methods:
+    - name: set
+      type: Vector3
+      description: Sets the value of each component of the vector.
+      returns: A reference to itself.
+      arguments:
+        - name: x
+          type: Number
+          description: The value to set the first component of the vector.
+      example: |-
+        const u = new Vector3()
+        u.set(1, 2, 3)
+        // Vector3 { x: 1, y: 2, z: 3 }
+    - name: setX
+      type: Vector3
+      description: Sets the value of the first component of the vector.
+      returns: A reference to itself.
+      arguments:
+        - name: value
+          type: Number
+          description: The value to set.
+      example: |-
+        const u = new Vector3()
+        u.setX(5)
+        // Vector3 { x: 5, y: 0, z: 0 }
+    - name: setY
+      type: Vector3
+      description: Sets the value of the second component of the vector.
+      returns: A reference to itself.
+      arguments:
+        - name: value
+          type: Number
+          description: The value to set.
+      example: |-
+        const u = new Vector3()
+        u.setY(5)
+        // Vector3 { x: 0, y: 5, z: 0 }
+    - name: setZ
+      type: Vector3
+      description: Sets the value of the third component of the vector.
+      returns: A reference to itself.
+      arguments:
+        - name: value
+          type: Number
+          description: The value to set.
+      example: |-
+        const u = new Vector3()
+        u.setZ(5)
+        // Vector3 { x: 0, y: 0, z: 5 }

@@ -32,3 +32,33 @@ layout: default
 ---
 
 {% endfor %}
+
+## Methods
+
+{% for method in site.data.classes.vector3.methods %}
+
+### {{ method.name }} : {{ method.type }}
+
+{{ method.description }}
+
+{% for argument in method.arguments %}
+
+#### Arguments
+
+* {{ argument.name }} : {{ argument.type }} - {{ argument.description }}
+
+{% endfor %}
+
+#### Returns
+
+{{ method.returns }}
+
+#### Example
+
+```javascript
+{{ method.example }}
+```
+
+---
+
+{% endfor %}
