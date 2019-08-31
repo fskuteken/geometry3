@@ -1,5 +1,6 @@
 {
   "name": "geometry3",
+  "version": "0.1.0",
   "description": "3D geometry library for JavaScript",
   "main": "build/lib",
   "repository": {
@@ -22,6 +23,7 @@
     "jsdoc": "jsdoc -c jsdoc.config.json",
     "lint": "npm run eslint && npm run markdownlint",
     "markdownlint": "markdownlint . --ignore node_modules",
+    "prepublish": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
