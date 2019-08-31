@@ -2,8 +2,11 @@
   "name": "geometry3",
   "version": "0.1.1",
   "description": "3D geometry library for JavaScript",
-  "main": "lib",
-  "files": ["/lib"],
+  "main": "build/geometry3.js",
+  "module": "build/geometry3.module.js",
+  "files": [
+    "/build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fskuteken/geometry3.git"
@@ -19,7 +22,7 @@
   },
   "homepage": "https://github.com/fskuteken/geometry3#readme",
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "rollup -c",
     "eslint": "eslint .",
     "jsdoc": "jsdoc -c jsdoc.config.json",
     "lint": "npm run eslint && npm run markdownlint",
@@ -39,5 +42,8 @@
     "jest": "^24.9.0",
     "jsdoc": "^3.6.3",
     "markdownlint-cli": "^0.18.0"
+  },
+  "dependencies": {
+    "rollup": "^1.20.3"
   }
 }
