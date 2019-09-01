@@ -1,8 +1,8 @@
 {
   "source": {
-    "include": ["src"]
+    "include": ["src/math"]
   },
   "opts": {
-    "destination": "docs"
+    "destination": "docs/docs"
   }
 }

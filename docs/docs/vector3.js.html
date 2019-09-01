@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: vector4.js</title>
+    <title>JSDoc: Source: vector3.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: vector4.js</h1>
+    <h1 class="page-title">Source: vector3.js</h1>
 
     
 
@@ -27,46 +27,42 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A 4D vector.
- * It has x, y, z and w components.
+ * A 3D vector.
+ * It has x, y and z components.
  */
-class Vector4 {
+class Vector3 {
   /**
    * Creates a new vector.
    * @param {Number} x The x component. The default is 0.
    * @param {Number} y The y component. The default is 0.
    * @param {Number} z The z component. The default is 0.
-   * @param {Number} w The w component. The default is 1.
    */
-  constructor(x = 0, y = 0, z = 0, w = 1) {
+  constructor(x = 0, y = 0, z = 0) {
     this.x = x;
     this.y = y;
     this.z = z;
-    this.w = w;
   }
 
   /**
    * Compares if the components of the vector are equal to the components of another vector.
-   * @param {Vector4} vector The vector to compare the components to.
+   * @param {Vector3} vector The vector to compare the components to.
    * @returns {Boolean} A value indicating whether all the components are equal.
    */
   equals(vector) {
-    return this.x === vector.x &amp;&amp; this.y === vector.y &amp;&amp; this.z === vector.z &amp;&amp; this.w === vector.w;
+    return this.x === vector.x &amp;&amp; this.y === vector.y &amp;&amp; this.z === vector.z;
   }
 
   /**
-   * Sets the x, y, z and w components of the vector.
+   * Sets the x, y and z components of the vector.
    * @param {Number} x The x component.
    * @param {Number} y The y component.
    * @param {Number} z The z component.
-   * @param {Number} w The w component.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
-  set(x, y, z, w) {
+  set(x, y, z) {
     this.x = x;
     this.y = y;
     this.z = z;
-    this.w = w;
 
     return this;
   }
@@ -74,7 +70,7 @@ class Vector4 {
   /**
    * Sets the x component of the vector.
    * @param {Number} value The x component.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   setX(value) {
     this.x = value;
@@ -85,7 +81,7 @@ class Vector4 {
   /**
    * Sets the y component of the vector.
    * @param {Number} value The y component.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   setY(value) {
     this.y = value;
@@ -96,7 +92,7 @@ class Vector4 {
   /**
    * Sets the z component of the vector.
    * @param {Number} value The z component.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   setZ(value) {
     this.z = value;
@@ -105,89 +101,73 @@ class Vector4 {
   }
 
   /**
-   * Sets the w component of the vector.
-   * @param {Number} value The w component.
-   * @returns {Vector4} The vector.
-   */
-  setW(value) {
-    this.w = value;
-
-    return this;
-  }
-
-  /**
    * Copies the components of another vector.
-   * @param {Vector4} vector The vector to copy.
-   * @returns {Vector4} The vector.
+   * @param {Vector3} vector The vector to copy.
+   * @returns {Vector3} The vector.
    */
   copy(vector) {
     this.x = vector.x;
     this.y = vector.y;
     this.z = vector.z;
-    this.w = vector.w;
 
     return this;
   }
 
   /**
    * Creates a clone of the vector.
-   * @returns {Vector4} The cloned vector.
+   * @returns {Vector3} The cloned vector.
    */
   clone() {
-    return new Vector4(this.x, this.y, this.z, this.w);
+    return new Vector3(this.x, this.y, this.z);
   }
 
   /**
    * Negates the components of the vector.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   negate() {
     this.x = -this.x;
     this.y = -this.y;
     this.z = -this.z;
-    this.w = -this.w;
 
     return this;
   }
 
   /**
    * Sets the components to the negation of another vector.
-   * @param {Vector4} vector The vector to negate.
-   * @returns {Vector4} The vector.
+   * @param {Vector3} vector The vector to negate.
+   * @returns {Vector3} The vector.
    */
   negateVector(vector) {
     this.x = -vector.x;
     this.y = -vector.y;
     this.z = -vector.z;
-    this.w = -vector.w;
 
     return this;
   }
 
   /**
    * Adds the components of another vector.
-   * @param {Vector4} vector The vector to add.
-   * @returns {Vector4} The vector.
+   * @param {Vector3} vector The vector to add.
+   * @returns {Vector3} The vector.
    */
   add(vector) {
     this.x += vector.x;
     this.y += vector.y;
     this.z += vector.z;
-    this.w += vector.w;
 
     return this;
   }
 
   /**
-   * Adds a scalar to the x, y, z and w components of the vector.
+   * Adds a scalar to the x, y and z components of the vector.
    * @param {Number} s The scalar to add.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   addScalar(s) {
     this.x += s;
     this.y += s;
     this.z += s;
-    this.w += s;
 
     return this;
   }
@@ -197,57 +177,52 @@ class Vector4 {
    * @param {Number} x The value to add to the x component.
    * @param {Number} y The value to add to the y component.
    * @param {Number} z The value to add to the z component.
-   * @param {Number} w The value to add to the w component.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
-  addValues(x, y, z, w) {
+  addValues(x, y, z) {
     this.x += x;
     this.y += y;
     this.z += z;
-    this.w += w;
 
     return this;
   }
 
   /**
    * Sets the vector to the addition of two vectors.
-   * @param {Vector4} u The first vector.
-   * @param {Vector4} v The second vector.
-   * @returns {Vector4} The vector.
+   * @param {Vector3} u The first vector.
+   * @param {Vector3} v The second vector.
+   * @returns {Vector3} The vector.
    */
   addVectors(u, v) {
     this.x = u.x + v.x;
     this.y = u.y + v.y;
     this.z = u.z + v.z;
-    this.w = u.w + v.w;
 
     return this;
   }
 
   /**
    * Subtracts the components of another vector.
-   * @param {Vector4} vector The vector to subtract.
-   * @returns {Vector4} The vector.
+   * @param {Vector3} vector The vector to subtract.
+   * @returns {Vector3} The vector.
    */
   subtract(vector) {
     this.x -= vector.x;
     this.y -= vector.y;
     this.z -= vector.z;
-    this.w -= vector.w;
 
     return this;
   }
 
   /**
-   * Subtracts a scalar from the x, y, z and w components of the vector.
+   * Subtracts a scalar from the x, y and z components of the vector.
    * @param {Number} s The scalar to subtract.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   subtractScalar(s) {
     this.x -= s;
     this.y -= s;
     this.z -= s;
-    this.w -= s;
 
     return this;
   }
@@ -257,29 +232,26 @@ class Vector4 {
    * @param {Number} x The value to subtract from the x component.
    * @param {Number} y The value to subtract from the y component.
    * @param {Number} z The value to subtract from the z component.
-   * @param {Number} w The value to subtract from the w component.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
-  subtractValues(x, y, z, w) {
+  subtractValues(x, y, z) {
     this.x -= x;
     this.y -= y;
     this.z -= z;
-    this.w -= w;
 
     return this;
   }
 
   /**
    * Sets the vector to the difference of two vectors.
-   * @param {Vector4} u The first vector.
-   * @param {Vector4} v The second vector.
-   * @returns {Vector4} The vector.
+   * @param {Vector3} u The first vector.
+   * @param {Vector3} v The second vector.
+   * @returns {Vector3} The vector.
    */
   subtractVectors(u, v) {
     this.x = u.x - v.x;
     this.y = u.y - v.y;
     this.z = u.z - v.z;
-    this.w = u.w - v.w;
 
     return this;
   }
@@ -287,13 +259,12 @@ class Vector4 {
   /**
    * Multiplies the components of the vector by a scalar.
    * @param {Number} s The scalar to multiply.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   multiplyScalar(s) {
     this.x *= s;
     this.y *= s;
     this.z *= s;
-    this.w *= s;
 
     return this;
   }
@@ -301,24 +272,37 @@ class Vector4 {
   /**
    * Divides the components of the vector by a scalar.
    * @param {Number} s The scalar to divide.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   divideScalar(s) {
     this.x /= s;
     this.y /= s;
     this.z /= s;
-    this.w /= s;
 
     return this;
   }
 
   /**
    * Calculates the dot product with another vector.
-   * @param {Vector4} vector The vector to calculate the dot product with.
+   * @param {Vector3} vector The vector to calculate the dot product with.
    * @returns {Number} The dot product.
    */
   dot(vector) {
-    return this.x * vector.x + this.y * vector.y + this.z * vector.z + this.w * vector.w;
+    return this.x * vector.x + this.y * vector.y + this.z * vector.z;
+  }
+
+  /**
+   * Sets the vector to the cross product between two vectors.
+   * @param {Vector3} u The first vector.
+   * @param {Vector3} v The second vector.
+   * @returns {Vector3} The vector.
+   */
+  crossVectors(u, v) {
+    this.x = u.y * v.z - u.z * v.y;
+    this.y = u.z * v.x - u.x * v.z;
+    this.z = u.x * v.y - u.y * v.x;
+
+    return this;
   }
 
   /**
@@ -326,7 +310,7 @@ class Vector4 {
    * @returns {Number} The length.
    */
   length() {
-    return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
+    return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
   }
 
   /**
@@ -334,122 +318,182 @@ class Vector4 {
    * @returns {Number} The squared length.
    */
   lengthSquared() {
-    return this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w;
+    return this.x * this.x + this.y * this.y + this.z * this.z;
   }
 
   /**
    * Calculates the distance to another vector.
-   * @param {Vector4} vector The vector to calculate the distance to.
+   * @param {Vector3} vector The vector to calculate the distance to.
    * @returns {Number} The distance.
    */
   distanceTo(vector) {
     const distX = this.x - vector.x;
     const distY = this.y - vector.y;
     const distZ = this.z - vector.z;
-    const distW = this.w - vector.w;
 
-    return Math.sqrt(distX * distX + distY * distY + distZ * distZ + distW * distW);
+    return Math.sqrt(distX * distX + distY * distY + distZ * distZ);
   }
 
   /**
    * Calculates the squared distance to another vector.
-   * @param {Vector4} vector The vector to calculate the squared distance to.
+   * @param {Vector3} vector The vector to calculate the squared distance to.
    * @returns {Number} The squared distance.
    */
   distanceToSquared(vector) {
     const distX = this.x - vector.x;
     const distY = this.y - vector.y;
     const distZ = this.z - vector.z;
-    const distW = this.w - vector.w;
 
-    return distX * distX + distY * distY + distZ * distZ + distW * distW;
+    return distX * distX + distY * distY + distZ * distZ;
   }
 
   /**
    * Normalizes the vector.
    * When the vector length is 0, it does nothing.
-   * @returns {Vector4} The vector.
+   * @returns {Vector3} The vector.
    */
   normalize() {
-    const length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
+    const length = Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
 
     if (length !== 0) {
       this.x /= length;
       this.y /= length;
       this.z /= length;
-      this.w /= length;
     }
 
     return this;
   }
 
   /**
-   * Transforms the vector by applying a Matrix4 to it.
-   * @param {Matrix4} matrix4 The transform matrix.
-   * @returns {Vector4} The vector.
+   * Transforms the vector by applying a Matrix3 to it.
+   * @param {Matrix3} matrix3 The transform matrix.
+   * @returns {Vector3} The vector.
    */
-  transform(matrix4) {
-    const { x, y, z, w } = this;
-    const m = matrix4.elements;
+  transform(matrix3) {
+    const { x, y, z } = this;
+    const m = matrix3.elements;
 
-    this.x = x * m[0] + y * m[4] + z * m[8] + w * m[12];
-    this.y = x * m[1] + y * m[5] + z * m[9] + w * m[13];
-    this.z = x * m[2] + y * m[6] + z * m[10] + w * m[14];
-    this.w = x * m[3] + y * m[7] + z * m[11] + w * m[15];
+    this.x = x * m[0] + y * m[3] + z * m[6];
+    this.y = x * m[1] + y * m[4] + z * m[7];
+    this.z = x * m[2] + y * m[5] + z * m[8];
 
     return this;
   }
 
   /**
    * Sets the vector to the components of another vector transformed by a matrix.
-   * @param {Vector4} vector The vector to transform.
-   * @param {Matrix4} matrix3 The transform matrix.
-   * @returns {Vector4} The vector.
+   * @param {Vector3} vector The vector to transform.
+   * @param {Matrix3} matrix3 The transform matrix.
+   * @returns {Vector3} The vector.
    */
-  transformVector(vector, matrix4) {
-    const { x, y, z, w } = vector;
+  transformVector(vector, matrix3) {
+    const { x, y, z } = vector;
+    const m = matrix3.elements;
+
+    this.x = x * m[0] + y * m[3] + z * m[6];
+    this.y = x * m[1] + y * m[4] + z * m[7];
+    this.z = x * m[2] + y * m[5] + z * m[8];
+
+    return this;
+  }
+
+  /**
+   * Transforms the vector with a Matrix4.
+   * It considers the homogeneous coordinate as 1.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
+  transformPosition(matrix4) {
+    const { x, y, z } = this;
     const m = matrix4.elements;
 
-    this.x = x * m[0] + y * m[4] + z * m[8] + w * m[12];
-    this.y = x * m[1] + y * m[5] + z * m[9] + w * m[13];
-    this.z = x * m[2] + y * m[6] + z * m[10] + w * m[14];
-    this.w = x * m[3] + y * m[7] + z * m[11] + w * m[15];
+    this.x = x * m[0] + y * m[4] + z * m[8] + m[12];
+    this.y = x * m[1] + y * m[5] + z * m[9] + m[13];
+    this.z = x * m[2] + y * m[6] + z * m[10] + m[14];
+
+    return this;
+  }
+
+  /**
+   * Sets the vector to the components of another vector transformed by a matrix.
+   * It considers the homogeneous coordinate as 1.
+   * @param {Vector3} vector The vector to transform.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
+  transformPositionVector(vector, matrix4) {
+    const { x, y, z } = vector;
+    const m = matrix4.elements;
+
+    this.x = x * m[0] + y * m[4] + z * m[8] + m[12];
+    this.y = x * m[1] + y * m[5] + z * m[9] + m[13];
+    this.z = x * m[2] + y * m[6] + z * m[10] + m[14];
+
+    return this;
+  }
+
+  /**
+   * Transforms the vector with a Matrix4.
+   * It considers the homogeneous coordinate as 0.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
+  transformDirection(matrix4) {
+    const { x, y, z } = this;
+    const m = matrix4.elements;
+
+    this.x = x * m[0] + y * m[4] + z * m[8];
+    this.y = x * m[1] + y * m[5] + z * m[9];
+    this.z = x * m[2] + y * m[6] + z * m[10];
+
+    return this;
+  }
+
+  /**
+   * Sets the vector to the components of another vector transformed by a matrix.
+   * It considers the homogeneous coordinate as 0.
+   * @param {Vector3} vector The vector to transform.
+   * @param {Matrix4} matrix4 The transform matrix.
+   * @returns {Vector3} The vector.
+   */
+  transformDirectionVector(vector, matrix4) {
+    const { x, y, z } = vector;
+    const m = matrix4.elements;
+
+    this.x = x * m[0] + y * m[4] + z * m[8];
+    this.y = x * m[1] + y * m[5] + z * m[9];
+    this.z = x * m[2] + y * m[6] + z * m[10];
 
     return this;
   }
 }
 
 /**
- * A Vector4 with its x, y, z and w components equal to zero.
+ * A Vector3 with its x, y and z components equal to zero.
  */
-Vector4.zero = new Vector4(0, 0, 0, 0);
+Vector3.zero = new Vector3(0, 0, 0);
 
 /**
- * A Vector4 with its x, y, z and w components equal to zero.
+ * A Vector3 with its x, y and z components equal to zero.
  */
-Vector4.one = new Vector4(1, 1, 1, 1);
+Vector3.one = new Vector3(1, 1, 1);
 
 /**
- * A unit Vector4 along the x axis.
+ * A unit Vector3 along the x axis.
  */
-Vector4.unitX = new Vector4(1, 0, 0, 0);
+Vector3.unitX = new Vector3(1, 0, 0);
 
 /**
- * A unit Vector4 along the y axis.
+ * A unit Vector3 along the y axis.
  */
-Vector4.unitY = new Vector4(0, 1, 0, 0);
+Vector3.unitY = new Vector3(0, 1, 0);
 
 /**
- * A unit Vector4 along the z axis.
+ * A unit Vector3 along the z axis.
  */
-Vector4.unitZ = new Vector4(0, 0, 1, 0);
+Vector3.unitZ = new Vector3(0, 0, 1);
 
-/**
- * A unit Vector4 along the w axis.
- */
-Vector4.unitW = new Vector4(0, 0, 0, 1);
-
-export default Vector4;
+export default Vector3;
 </code></pre>
         </article>
     </section>
@@ -466,7 +510,7 @@ export default Vector4;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Fri Aug 30 2019 22:35:32 GMT-0300 (Brasilia Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Aug 31 2019 22:56:24 GMT-0300 (Brasilia Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
