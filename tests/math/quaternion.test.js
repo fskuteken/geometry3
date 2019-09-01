@@ -1,5 +1,5 @@
-import Quaternion from '../src/quaternion';
-import Vector3 from '../src/vector3';
+import Quaternion from '../../src/math/quaternion';
+import Vector3 from '../../src/math/vector3';
 
 describe('Quaternion', () => {
   describe('constructor', () => {

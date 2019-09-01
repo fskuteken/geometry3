@@ -1,10 +1,10 @@
-import Math from '../src/index';
-import Matrix3 from '../src/matrix3';
-import Matrix4 from '../src/matrix4';
-import Quaternion from '../src/quaternion';
-import Vector2 from '../src/vector2';
-import Vector3 from '../src/vector3';
-import Vector4 from '../src/vector4';
+import Math from '../../src/math/index';
+import Matrix3 from '../../src/math/matrix3';
+import Matrix4 from '../../src/math/matrix4';
+import Quaternion from '../../src/math/quaternion';
+import Vector2 from '../../src/math/vector2';
+import Vector3 from '../../src/math/vector3';
+import Vector4 from '../../src/math/vector4';
 
 describe('Math', () => {
   it('exports the Matrix3 class', () => {

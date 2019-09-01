@@ -1,4 +1,4 @@
-import Vector2 from '../src/vector2';
+import Vector2 from '../../src/math/vector2';
 
 describe('Vector2', () => {
   describe('constructor', () => {

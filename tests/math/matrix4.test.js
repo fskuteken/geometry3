@@ -1,5 +1,5 @@
-import Matrix4 from '../src/matrix4';
-import Vector3 from '../src/vector3';
+import Matrix4 from '../../src/math/matrix4';
+import Vector3 from '../../src/math/vector3';
 
 describe('Matrix4', () => {
   describe('constructor', () => {

@@ -1,4 +1,4 @@
-import Matrix3 from '../src/matrix3';
+import Matrix3 from '../../src/math/matrix3';
 
 describe('Matrix3', () => {
   describe('constructor', () => {
