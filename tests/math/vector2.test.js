@@ -452,6 +452,30 @@ describe('Vector2', () => {
     });
   });
 
+  describe('#lerpVectors', () => {
+    it('sets the vector to the interpolation of two other vectors', () => {
+      const vector = new Vector2();
+      const u = new Vector2(1, 2);
+      const v = new Vector2(3, 4);
+
+      const result = vector.lerpVectors(u, v, 0.5);
+
+      expect(result).toMatchObject({
+        x: 2, y: 3,
+      });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector2();
+      const u = new Vector2();
+      const v = new Vector2();
+
+      const result = vector.lerpVectors(u, v, 0);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x and y components equal to zero', () => {
