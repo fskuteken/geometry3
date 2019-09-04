@@ -389,6 +389,22 @@ class Vector4 {
 
     return this;
   }
+
+  /**
+   * Sets the vector to the interpolation of two other vectors.
+   * @param {Vector4} u The first vector of the interpolation.
+   * @param {Vector4} v The second vector of the interpolation.
+   * @param {Number} t The interpolation value.
+   * @returns {Vector4} The vector.
+   */
+  lerpVectors(u, v, t) {
+    this.x = (1 - t) * u.x + t * v.x;
+    this.y = (1 - t) * u.y + t * v.y;
+    this.z = (1 - t) * u.z + t * v.z;
+    this.w = (1 - t) * u.w + t * v.w;
+
+    return this;
+  }
 }
 
 /**
