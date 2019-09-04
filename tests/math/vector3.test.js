@@ -664,6 +664,30 @@ describe('Vector3', () => {
     });
   });
 
+  describe('#lerpVectors', () => {
+    it('sets the vector to the interpolation of two other vectors', () => {
+      const vector = new Vector3();
+      const u = new Vector3(1, 2, 3);
+      const v = new Vector3(4, 5, 6);
+
+      const result = vector.lerpVectors(u, v, 0.5);
+
+      expect(result).toMatchObject({
+        x: 2.5, y: 3.5, z: 4.5,
+      });
+    });
+
+    it('returns the vector', () => {
+      const vector = new Vector3();
+      const u = new Vector3();
+      const v = new Vector3();
+
+      const result = vector.lerpVectors(u, v, 0);
+
+      expect(result).toBe(vector);
+    });
+  });
+
   describe('constants', () => {
     describe('zero', () => {
       it('has x, y and z components equal to zero', () => {
