@@ -27,7 +27,7 @@
     "jsdoc": "jsdoc -c jsdoc.config.json",
     "lint": "npm run eslint && npm run markdownlint",
     "markdownlint": "markdownlint . --ignore node_modules",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
