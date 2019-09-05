@@ -22,4 +22,35 @@ describe('Size3', () => {
       });
     });
   });
+
+  describe('clone', () => {
+    it('creates a clone of the size', () => {
+      const size = new Size3(1, 2, 3);
+
+      const result = size.clone();
+
+      expect(result).toMatchObject(size);
+      expect(result).not.toBe(size);
+    });
+  });
+
+  describe('copy', () => {
+    it('copies the properties of another size', () => {
+      const size = new Size3();
+      const sizeToCopy = new Size3(1, 2, 3);
+
+      size.copy(sizeToCopy);
+
+      expect(size).toMatchObject(sizeToCopy);
+    });
+
+    it('returns the size', () => {
+      const size = new Size3();
+      const sizeToCopy = new Size3();
+
+      const result = size.copy(sizeToCopy);
+
+      expect(result).toBe(size);
+    });
+  });
 });
