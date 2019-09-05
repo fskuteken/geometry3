@@ -15,6 +15,21 @@ class Sphere {
   }
 
   /**
+   * Gets the diameter of the sphere.
+   * @returns {Number} The diameter of the sphere.
+   */
+  get diameter() {
+    return 2 * this.radius;
+  }
+
+  /**
+   * Sets the diameter of the sphere.
+   */
+  set diameter(value) {
+    this.radius = value / 2;
+  }
+
+  /**
    * Creates a clone of the sphere.
    * @returns {Sphere} The cloned sphere.
    */

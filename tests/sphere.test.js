@@ -23,6 +23,26 @@ describe('Sphere', () => {
     });
   });
 
+  describe('diameter', () => {
+    describe('getter', () => {
+      it('returns the radius of the sphere multiplied by two', () => {
+        const sphere = new Sphere();
+
+        sphere.diameter = 10;
+
+        expect(sphere.radius).toEqual(5);
+      });
+    });
+
+    describe('setter', () => {
+      it('sets the radius of the sphere to the diameter divided by two', () => {
+        const sphere = new Sphere(5);
+
+        expect(sphere.diameter).toEqual(10);
+      });
+    });
+  });
+
   describe('clone', () => {
     it('returns a clone of the sphere', () => {
       const sphere = new Sphere(1, new Vector3(2, 3, 4));
