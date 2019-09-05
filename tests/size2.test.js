@@ -88,4 +88,24 @@ describe('Size2', () => {
       });
     });
   });
+
+  describe('set', () => {
+    it('sets the properties of the size', () => {
+      const width = 1;
+      const height = 2;
+      const size = new Size2();
+
+      size.set(width, height);
+
+      expect(size).toMatchObject({ width, height });
+    });
+
+    it('returns the size', () => {
+      const size = new Size2();
+
+      const result = size.set(1, 2);
+
+      expect(size).toBe(result);
+    });
+  });
 });

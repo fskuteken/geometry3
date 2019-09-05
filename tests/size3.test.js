@@ -77,4 +77,25 @@ describe('Size3', () => {
       });
     });
   });
+
+  describe('set', () => {
+    it('sets the properties of the size', () => {
+      const width = 1;
+      const height = 2;
+      const depth = 3;
+      const size = new Size3();
+
+      size.set(width, height, depth);
+
+      expect(size).toMatchObject({ width, height, depth });
+    });
+
+    it('returns the size', () => {
+      const size = new Size3();
+
+      const result = size.set(1, 2, 3);
+
+      expect(size).toBe(result);
+    });
+  });
 });

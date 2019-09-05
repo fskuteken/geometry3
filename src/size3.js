@@ -43,6 +43,20 @@ class Size3 {
   equals(size) {
     return this.width === size.width && this.height === size.height && this.depth === size.depth;
   }
+
+  /**
+   * Sets the width, the height and the depth of the size.
+   * @param {Number} width The width to set.
+   * @param {Number} height The height to set.
+   * @returns {Size2} The size.
+   */
+  set(width, height, depth) {
+    this.width = width;
+    this.height = height;
+    this.depth = depth;
+
+    return this;
+  }
 }
 
 export default Size3;

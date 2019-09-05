@@ -48,6 +48,19 @@ class Size2 {
   equals(size) {
     return this.width === size.width && this.height === size.height;
   }
+
+  /**
+   * Sets the width and the height of the size.
+   * @param {Number} width The width to set.
+   * @param {Number} height The height to set.
+   * @returns {Size2} The size.
+   */
+  set(width, height) {
+    this.width = width;
+    this.height = height;
+
+    return this;
+  }
 }
 
 export default Size2;
