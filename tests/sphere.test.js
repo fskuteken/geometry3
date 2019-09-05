@@ -149,6 +149,16 @@ describe('Sphere', () => {
     });
   });
 
+  describe('surfaceArea', () => {
+    it('calculates the surface area of the sphere', () => {
+      const sphere = new Sphere(2);
+
+      const result = sphere.surfaceArea();
+
+      expect(result).toEqual(16 * Math.PI);
+    });
+  });
+
   describe('volume', () => {
     it('calculates the volume of the sphere', () => {
       const sphere = new Sphere(2);

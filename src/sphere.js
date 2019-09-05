@@ -80,6 +80,14 @@ class Sphere {
   }
 
   /**
+   * Calculates the surface area of the sphere.
+   * @returns {Number} The surface area of the sphere.
+   */
+  surfaceArea() {
+    return 4 * Math.PI * this.radius * this.radius;
+  }
+
+  /**
    * Calculates the volume of the sphere.
    * @returns {Number} The volume of the sphere.
    */
