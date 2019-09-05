@@ -2,6 +2,7 @@ import index from '../src/index';
 import Matrix3 from '../src/matrix3';
 import Matrix4 from '../src/matrix4';
 import Quaternion from '../src/quaternion';
+import Sphere from '../src/sphere';
 import Vector2 from '../src/vector2';
 import Vector3 from '../src/vector3';
 import Vector4 from '../src/vector4';
@@ -17,6 +18,10 @@ describe('index', () => {
 
   it('exports the Quaternion class', () => {
     expect(index.Quaternion).toEqual(Quaternion);
+  });
+
+  it('exports the Sphere class', () => {
+    expect(index.Sphere).toEqual(Sphere);
   });
 
   it('exports the Vector2 class', () => {
