@@ -178,22 +178,44 @@ describe('Matrix4', () => {
   });
 
   describe('#invert', () => {
-    it('inverts the matrix', () => {
-      const matrix = Matrix4.fromValues(
-        2, 0, 0, 0,
-        0, 4, 0, 0,
-        0, 0, 8, 0,
-        0, 0, 0, 1,
-      );
+    describe('when the matrix is invertible', () => {
+      it('inverts the matrix', () => {
+        const matrix = Matrix4.fromValues(
+          2, 0, 0, 0,
+          0, 4, 0, 0,
+          0, 0, 8, 0,
+          0, 0, 0, 1,
+        );
 
-      matrix.invert();
+        matrix.invert();
 
-      expect(matrix.elements).toEqual([
-        0.5, 0, 0, 0,
-        0, 0.25, 0, 0,
-        0, 0, 0.125, 0,
-        0, 0, 0, 1,
-      ]);
+        expect(matrix.elements).toEqual([
+          0.5, 0, 0, 0,
+          0, 0.25, 0, 0,
+          0, 0, 0.125, 0,
+          0, 0, 0, 1,
+        ]);
+      });
+    });
+
+    describe('when the matrix is not invertible', () => {
+      it('does not invert the matrix', () => {
+        const matrix = Matrix4.fromValues(
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+        );
+
+        matrix.invert();
+
+        expect(matrix.elements).toEqual([
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+          0, 0, 0, 0,
+        ]);
+      });
     });
 
     it('returns the matrix', () => {
