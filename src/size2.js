@@ -13,6 +13,14 @@ class Size2 {
   }
 
   /**
+   * Calculates the aspect ratio of the size (its width divided by its height).
+   * @returns {Number} The aspect ratio of the size.
+   */
+  aspectRatio() {
+    return this.width / this.height;
+  }
+
+  /**
    * Creates a clone of the size.
    * @returns {Size2} The cloned size.
    */

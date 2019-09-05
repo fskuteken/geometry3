@@ -22,6 +22,18 @@ describe('Size2', () => {
     });
   });
 
+  describe('aspectRatio', () => {
+    it('calculates the aspect ratio of the size', () => {
+      const width = 8;
+      const height = 6;
+      const size = new Size2(width, height);
+
+      const result = size.aspectRatio();
+
+      expect(result).toEqual(width / height);
+    });
+  });
+
   describe('clone', () => {
     it('creates a clone of the size', () => {
       const size = new Size2(1, 2);
