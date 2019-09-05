@@ -78,6 +78,14 @@ class Sphere {
 
     return this;
   }
+
+  /**
+   * Calculates the volume of the sphere.
+   * @returns {Number} The volume of the sphere.
+   */
+  volume() {
+    return (4 / 3) * Math.PI * this.radius * this.radius * this.radius;
+  }
 }
 
 export default Sphere;

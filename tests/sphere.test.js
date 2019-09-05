@@ -148,4 +148,14 @@ describe('Sphere', () => {
       expect(result).toBe(sphere);
     });
   });
+
+  describe('volume', () => {
+    it('calculates the volume of the sphere', () => {
+      const sphere = new Sphere(2);
+
+      const result = sphere.volume();
+
+      expect(result).toEqual((4 / 3) * Math.PI * 8);
+    });
+  });
 });
