@@ -52,4 +52,28 @@ describe('Size2', () => {
       expect(result).toBe(size);
     });
   });
+
+  describe('equals', () => {
+    describe('when the properties are not equal', () => {
+      it('returns false', () => {
+        const size = new Size2(1, 2);
+        const sizeToCompare = new Size2(3, 4);
+
+        const result = size.equals(sizeToCompare);
+
+        expect(result).toEqual(false);
+      });
+    });
+
+    describe('when the properties are equal', () => {
+      it('returns true', () => {
+        const size = new Size2(1, 2);
+        const sizeToCompare = new Size2(1, 2);
+
+        const result = size.equals(sizeToCompare);
+
+        expect(result).toEqual(true);
+      });
+    });
+  });
 });

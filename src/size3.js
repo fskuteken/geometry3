@@ -34,6 +34,15 @@ class Size3 {
 
     return this;
   }
+
+  /**
+   * Compares the properties to another size.
+   * @param {Size3} size The size to compare to.
+   * @returns {Boolean} A value indicating whether the properties of the sizes are equal.
+   */
+  equals(size) {
+    return this.width === size.width && this.height === size.height && this.depth === size.depth;
+  }
 }
 
 export default Size3;
