@@ -9,4 +9,4 @@
 
 ## Documentation
 
-Visit [geometry3](https://fskuteken.github.io/geometry3/) to read the documentation.
+Visit [geometry3](https://fskuteken.github.io/geometry3/docs) to read the documentation.
