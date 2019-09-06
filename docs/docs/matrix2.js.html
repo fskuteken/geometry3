@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: matrix3.js</title>
+    <title>JSDoc: Source: matrix2.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: matrix3.js</h1>
+    <h1 class="page-title">Source: matrix2.js</h1>
 
     
 
@@ -27,144 +27,113 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A 3x3 matrix.
+ * A 2x2 matrix.
  * Its elements are stored in column-major order.
  */
-class Matrix3 {
+class Matrix2 {
   /**
-   * Creates a new identity Matrix3.
+   * Creates a new identity Matrix2.
    */
   constructor() {
     this.elements = [
-      1, 0, 0,
-      0, 1, 0,
-      0, 0, 1,
+      1, 0,
+      0, 1,
     ];
   }
 
   /**
-   * Creates a new Matrix3 from the values of each element.
+   * Creates a new Matrix2 from the values of each element.
    * @param {Number} a00 The element at row 0 and column 0.
    * @param {Number} a01 The element at row 0 and column 1.
-   * @param {Number} a02 The element at row 0 and column 2.
    * @param {Number} a10 The element at row 1 and column 0.
    * @param {Number} a11 The element at row 1 and column 1.
-   * @param {Number} a12 The element at row 1 and column 2.
-   * @param {Number} a20 The element at row 2 and column 0.
-   * @param {Number} a21 The element at row 2 and column 1.
-   * @param {Number} a22 The element at row 2 and column 2.
-   * @returns {Matrix3} The created matrix.
+   * @returns {Matrix2} The created matrix.
    */
   static fromValues(
-    a00, a01, a02,
-    a10, a11, a12,
-    a20, a21, a22,
+    a00, a01,
+    a10, a11,
   ) {
-    const matrix = new Matrix3();
+    const matrix = new Matrix2();
     const t = matrix.elements;
 
-    t[0] = a00; t[3] = a01; t[6] = a02;
-    t[1] = a10; t[4] = a11; t[7] = a12;
-    t[2] = a20; t[5] = a21; t[8] = a22;
+    t[0] = a00; t[2] = a01;
+    t[1] = a10; t[3] = a11;
 
     return matrix;
   }
 
   /**
    * Compares if the elements of the matrix are equal to the elements of another matrix.
-   * @param {Matrix3} matrix The matrix to compare the components to.
+   * @param {Matrix2} matrix The matrix to compare the components to.
    * @returns {Boolean} A value indicating whether all the elements are equal.
    */
   equals(matrix) {
     const m = matrix.elements;
     const t = this.elements;
 
-    return (
-      m[0] === t[0]
-      &amp;&amp; m[1] === t[1]
-      &amp;&amp; m[2] === t[2]
-      &amp;&amp; m[3] === t[3]
-      &amp;&amp; m[4] === t[4]
-      &amp;&amp; m[5] === t[5]
-      &amp;&amp; m[6] === t[6]
-      &amp;&amp; m[7] === t[7]
-      &amp;&amp; m[8] === t[8]
-    );
+    return m[0] === t[0] &amp;&amp; m[1] === t[1] &amp;&amp; m[2] === t[2] &amp;&amp; m[3] === t[3];
   }
 
   /**
    * Sets the elements of the matrix.
    * @param {Number} a00 The element at row 0 and column 0.
    * @param {Number} a01 The element at row 0 and column 1.
-   * @param {Number} a02 The element at row 0 and column 2.
    * @param {Number} a10 The element at row 1 and column 0.
    * @param {Number} a11 The element at row 1 and column 1.
-   * @param {Number} a12 The element at row 1 and column 2.
-   * @param {Number} a20 The element at row 2 and column 0.
-   * @param {Number} a21 The element at row 2 and column 1.
-   * @param {Number} a22 The element at row 2 and column 2.
-   * @returns {Matrix3} The matrix.
+   * @returns {Matrix2} The matrix.
    */
   set(
-    a00, a01, a02,
-    a10, a11, a12,
-    a20, a21, a22,
+    a00, a01,
+    a10, a11,
   ) {
     const t = this.elements;
 
-    t[0] = a00; t[3] = a01; t[6] = a02;
-    t[1] = a10; t[4] = a11; t[7] = a12;
-    t[2] = a20; t[5] = a21; t[8] = a22;
+    t[0] = a00; t[2] = a01;
+    t[1] = a10; t[3] = a11;
 
     return this;
   }
 
   /**
    * Sets the elements of the matrix to the identity.
-   * @returns {Matrix3} The matrix.
+   * @returns {Matrix2} The matrix.
    */
   setIdentity() {
     return this.set(
-      1, 0, 0,
-      0, 1, 0,
-      0, 0, 1,
+      1, 0,
+      0, 1,
     );
   }
 
   /**
    * Copies the elements from another matrix.
-   * @param {Matrix3} matrix The matrix to copy the elements from.
-   * @returns {Matrix3} The matrix.
+   * @param {Matrix2} matrix The matrix to copy the elements from.
+   * @returns {Matrix2} The matrix.
    */
   copy(matrix) {
     const t = this.elements;
 
-    [
-      t[0], t[1], t[2],
-      t[3], t[4], t[5],
-      t[6], t[7], t[8],
-    ] = matrix.elements;
+    [t[0], t[1], t[2], t[3]] = matrix.elements;
 
     return this;
   }
 
   /**
    * Creates a clone of the matrix.
-   * @returns {Matrix3} The cloned matrix.
+   * @returns {Matrix2} The cloned matrix.
    */
   clone() {
     const t = this.elements;
 
-    return Matrix3.fromValues(
-      t[0], t[3], t[6],
-      t[1], t[4], t[7],
-      t[2], t[5], t[8],
+    return Matrix2.fromValues(
+      t[0], t[2],
+      t[1], t[3],
     );
   }
 
   /**
    * Transposes the matrix.
-   * @returns {Matrix3} The matrix.
+   * @returns {Matrix2} The matrix.
    */
   transpose() {
     return this.set(...this.elements);
@@ -172,24 +141,22 @@ class Matrix3 {
 }
 
 /**
- * An identity Matrix3.
+ * An identity Matrix2.
  */
-Matrix3.identity = Matrix3.fromValues(
-  1, 0, 0,
-  0, 1, 0,
-  0, 0, 1,
+Matrix2.identity = Matrix2.fromValues(
+  1, 0,
+  0, 1,
 );
 
 /**
- * A Matrix3 with all elements equal to zero.
+ * A Matrix2 with all elements equal to zero.
  */
-Matrix3.zero = Matrix3.fromValues(
-  0, 0, 0,
-  0, 0, 0,
-  0, 0, 0,
+Matrix2.zero = Matrix2.fromValues(
+  0, 0,
+  0, 0,
 );
 
-export default Matrix3;
+export default Matrix2;
 </code></pre>
         </article>
     </section>
